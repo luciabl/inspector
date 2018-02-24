@@ -14,6 +14,13 @@ table {
 	border-collapse:collapse;
 }
 
+a {
+	color: black;
+}
+a:hover { 
+	color: black;
+}
+
 .settings {
 	position: fixed;
 	background: rgba(0, 0, 0, 0.93);
@@ -316,6 +323,5 @@ table {
 }
 
 .size-img {
-	height: 30px;
-	width: 70px;
+	height: 20px;
 }
