@@ -1,5 +1,5 @@
 /*
-INSPECTOR
+    INSPECTOR v0.0.1
  */
 
 chrome.webRequest.onBeforeRequest.addListener(
@@ -56,12 +56,11 @@ chrome.webRequest.onBeforeRequest.addListener(
                       '<div class="col-sm-1"></div>' + 
                       '<div class="col-sm-1 text-center"><img class="size-img" src="'+img+'"/></div>' +
                       '<div class="col-sm-2 text-center">'+tool+'</div>' +
-                      '<div class="col-sm-2 text-center">'+path+'</div>' +
+                      '<div class="col-sm-3 text-center">'+path+'</div>' +
                       '<div class="col-sm-2 text-center">'+type+'</div>' +
                       '<div class="col-sm-1 text-center"><img class="size-img" src="'+business+'"/></div>' +
                       '<div class="col-sm-1"></div>' + 
                       '<div class="col-sm-1"><i class="fa fa-info" style="font-size:24px"></i></div>' + 
-                      '<div class="col-sm-1"></div>' + 
                     '</div>' +
                     '</a>' +
                   '</div>' +
