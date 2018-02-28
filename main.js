@@ -3,35 +3,45 @@
  */
 
 function impresion(id, img, tool, path, type, business, body) {
-    $(".accordion").append(
-        '<div class="card">' +
-        '<div class="card-header">' +
-        '<a class="collapsed card-link" data-toggle="collapse" data-parent="#accordion" href="#' + id + '">' +
-        '<div class="row">' +
-        '<div class="col-sm-1"></div>' +
-        '<div class="col-sm-1 text-center"><img class="size-img" src="' + img + '"/></div>' +
-        '<div class="col-sm-2 text-center">' + tool + '</div>' +
-        '<div class="col-sm-3 text-center">' + path + '</div>' +
-        '<div class="col-sm-2 text-center">' + type + '</div>' +
-        '<div class="col-sm-1 text-center"><img class="size-img" src="' + business + '"/></div>' +
-        '<div class="col-sm-1"></div>' +
-        '<div class="col-sm-1"><i class="fa fa-info" style="font-size:24px"></i></div>' +
-        '</div>' +
-        '</a>' +
-        '</div>' +
-        '<div id="' + id + '" class="collapse">' +
-        '<div class="card-body">' +
-        '<div class="row">' +
-        '<div class="col-sm-1"></div>' +
-        '<div class="col-sm-10">' + body + '</div>' +
-        '<div class="col-sm-1"></div>' +
-        '</div>' +
-        '</div>' +
-        '</div>');
+    if (type.indexOf("view") > -1) {
+        type = 'pageview'
+    }
+    if ((tool == 'GOOGLE ANALYTICS' && business.indexOf("mercadolibre.com") > -1) || (tool == 'MELIDATA' && business.indexOf("mercadolibre") > -1)) {
+        business = 'img/md.png'
+    } else if ((tool == 'GOOGLE ANALYTICS' && business.indexOf("mercadopago.com") > -1) || (tool == 'MELIDATA' && business.indexOf("mercadopago") > -1)) {
+        business = 'img/mp.png'
+    } else { business = '' }
+
+    if (business != '') {
+        $(".accordion").append(
+            '<div class="card">' +
+            '<div class="card-header">' +
+            '<a class="collapsed card-link" data-toggle="collapse" data-parent="#accordion" href="#' + id + '">' +
+            '<div class="row">' +
+            '<div class="col-sm-1"></div>' +
+            '<div class="col-sm-1 text-center"><img class="size-img" src="' + img + '"/></div>' +
+            '<div class="col-sm-2 text-center">' + tool + '</div>' +
+            '<div class="col-sm-3 text-center">' + path + '</div>' +
+            '<div class="col-sm-2 text-center">' + type + '</div>' +
+            '<div class="col-sm-1 text-center"><img class="size-img" src="' + business + '"/></div>' +
+            '<div class="col-sm-1"></div>' +
+            '<div class="col-sm-1"><i class="fa fa-info" style="font-size:24px"></i></div>' +
+            '</div>' +
+            '</a>' +
+            '</div>' +
+            '<div id="' + id + '" class="collapse">' +
+            '<div class="card-body">' +
+            '<div class="row">' +
+            '<div class="col-sm-1"></div>' +
+            '<div class="col-sm-10">' + body + '</div>' +
+            '<div class="col-sm-1"></div>' +
+            '</div>' +
+            '</div>' +
+            '</div>');
+    }
 }
 
 function llamadas(details) {
-
     var tool = '';
     var path = '';
     var type = '';
@@ -51,59 +61,36 @@ function llamadas(details) {
                     new Uint8Array(details.requestBody.raw[i].bytes))));
             }
             join = JSON.parse(joinBuffer);
-            console.log(join.tracks.length);
             for (j = 0; j < join.tracks.length; j++) {
                 path = join.tracks[j].path;
-                if (join.tracks[j].type.indexOf("view") > -1) {
-                    type = 'pageview'
-                } else {
-                    type = join.tracks[j].type
-                }
-                if ((join.tracks[j].application.business).indexOf("mercadolibre") > -1) {
-                    business = 'img/md.png'
-                } else if ((join.tracks[j].application.business).indexOf("mercadopago") > -1) {
-                    business = 'img/mp.png'
-                }
-                body = join.tracks[j];
+                type = join.tracks[j].type;
+                business = join.tracks[j].application.business;
+                body = JSON.stringify(join.tracks[j]);
                 tool = "MELIDATA";
                 img = "img/md.png";
                 id = join.tracks[j].id;
                 impresion(id, img, tool, path, type, business, body);
-                console.log(join.tracks[j].path);
             }
         } else if ((details.requestBody.raw.length) == 1) {
             var parsedJSON = JSON.parse(dec.decode(details.requestBody.raw[0].bytes));
             path = parsedJSON.tracks[0].path;
-            if (parsedJSON.tracks[0].type.indexOf("view") > -1) {
-                type = 'pageview'
-            } else {
-                type = parsedJSON.tracks[0].type
-            }
-            if ((parsedJSON.tracks[0].application.business).indexOf("mercadolibre") > -1) {
-                business = 'img/md.png'
-            } else if ((parsedJSON.tracks[0].application.business).indexOf("mercadopago") > -1) {
-                business = 'img/mp.png'
-            }
+            type = parsedJSON.tracks[0].type
+            business = parsedJSON.tracks[0].application.business;
             body = dec.decode(details.requestBody.raw[0].bytes);
             tool = "MELIDATA";
             img = "img/md.png";
             id = parsedJSON.tracks[0].id;
-            impresion(id, img, tool, path, type, business, body); 
+            impresion(id, img, tool, path, type, business, body);
         }
     } else if (details.method == "POST" && details.url == 'https://www.google-analytics.com/collect') {
         var url = new URL('http://www.ml.com.ar/?' + decodeURIComponent(dec.decode(details.requestBody.raw[0].bytes)));
         path = url.searchParams.get("dp");
         type = url.searchParams.get("t");
-        if (url.searchParams.get("dl").indexOf("mercadolibre") > -1) {
-            business = 'img/md.png'
-        } else if (url.searchParams.get("dl").indexOf("mercadopago") > -1) {
-            business = 'img/mp.png'
-        }
+        business = url.searchParams.get("dl")
         tool = "GOOGLE ANALYTICS";
         img = "img/ga.png";
         body = "";
         id = url.searchParams.get("z")
-
         var sURLVariables = decodeURIComponent(dec.decode(details.requestBody.raw[0].bytes)).split('&');
         for (var i = 0; i < sURLVariables.length; i++) {
             var sParametro = sURLVariables[i].split('=');
@@ -117,7 +104,7 @@ function llamadas(details) {
     //api dimensions:
     //https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/customDimensions/get
     //https://www.googleapis.com/analytics/v3/management/accounts/46085787/webproperties/UA-46085787-1/customDimensions/ga:dimension2
-    
+
 
     /*      for (i = 0; i < parsedJSON.tracks.length; i++) {
                  console.log(parsedJSON.tracks[i].path + ' - ' + parsedJSON.tracks[i].type + ' - ' + parsedJSON.tracks[i].application.business);
