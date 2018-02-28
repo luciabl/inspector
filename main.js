@@ -55,31 +55,19 @@ function llamadas(details) {
     var j = 0;
     var i = 0;
     if (details.method == "POST" && details.url == 'https://data.mercadolibre.com/tracks') {
-        if (details.requestBody.raw.length > 1) {
-            for (i = 0; i < details.requestBody.raw.length; i++) {
-                joinBuffer += ((String.fromCharCode.apply(null,
-                    new Uint8Array(details.requestBody.raw[i].bytes))));
-            }
-            join = JSON.parse(joinBuffer);
-            for (j = 0; j < join.tracks.length; j++) {
-                path = join.tracks[j].path;
-                type = join.tracks[j].type;
-                business = join.tracks[j].application.business;
-                body = JSON.stringify(join.tracks[j]);
-                tool = "MELIDATA";
-                img = "img/md.png";
-                id = join.tracks[j].id;
-                impresion(id, img, tool, path, type, business, body);
-            }
-        } else if ((details.requestBody.raw.length) == 1) {
-            var parsedJSON = JSON.parse(dec.decode(details.requestBody.raw[0].bytes));
-            path = parsedJSON.tracks[0].path;
-            type = parsedJSON.tracks[0].type
-            business = parsedJSON.tracks[0].application.business;
-            body = dec.decode(details.requestBody.raw[0].bytes);
+        for (i = 0; i < details.requestBody.raw.length; i++) {
+            joinBuffer += ((String.fromCharCode.apply(null,
+                new Uint8Array(details.requestBody.raw[i].bytes))));
+        }
+        join = JSON.parse(joinBuffer);
+        for (j = 0; j < join.tracks.length; j++) {
+            path = join.tracks[j].path;
+            type = join.tracks[j].type;
+            business = join.tracks[j].application.business;
+            body = JSON.stringify(join.tracks[j]);
             tool = "MELIDATA";
             img = "img/md.png";
-            id = parsedJSON.tracks[0].id;
+            id = join.tracks[j].id;
             impresion(id, img, tool, path, type, business, body);
         }
     } else if (details.method == "POST" && details.url == 'https://www.google-analytics.com/collect') {
