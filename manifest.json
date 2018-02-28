@@ -6,7 +6,8 @@
 	"author": "BA-Analytics",
 	"homepage_url": "https://www.mercadolibre.com.ar",
 	"background": {
-		"scripts": ["background.js"]
+		"scripts": ["background.js"],
+		"persistent": true
 	},
 	"icons": { "128": "img/128.png" },
 	"browser_action": {
