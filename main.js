@@ -2,28 +2,13 @@
     INSPECTOR v0.0.1
  */
 
-function lee_dimension_json(id, business) {
-    var name = '';
-    id--;
-
-    $.getJSON("dimensiones.json", function(result) {
-        name = (result);
-        // console.log (id);
-        // console.log (result["dimensions_ml"][id].id + result["dimensions_ml"][id].name);
-    });
-
-    return name
-}
-
-
-
-function impresion(id, img, tool, path, type, business, body) {
+function impresion(id, img, tool, path, type, business, body, body2) {
     if (type.indexOf("view") > -1) {
         type = 'pageview'
     }
-    if ((tool == 'GOOGLE ANALYTICS' && business.indexOf("mercadolibre.com") > -1) || (tool == 'MELIDATA' && business.indexOf("mercadolibre") > -1)) {
+    if (business.match(/mercadoli(b|v)re(\.|$)/)) {
         business = 'img/md.png'
-    } else if ((tool == 'GOOGLE ANALYTICS' && business.indexOf("mercadopago.com") > -1) || (tool == 'MELIDATA' && business.indexOf("mercadopago") > -1)) {
+    } else if (business.match(/mercadopago(\.|$)/)) {
         business = 'img/mp.png'
     } else { business = '' }
 
@@ -48,7 +33,25 @@ function impresion(id, img, tool, path, type, business, body) {
             '<div class="card-body">' +
             '<div class="row">' +
             '<div class="col-sm-1"></div>' +
-            '<div class="col-sm-10">' + body + '</div>' +
+            '<div class="col-sm-10">' +
+            "<div class='row'>" +
+            "<div class='col'>" +
+            "<h6>Details</h6>" +
+            "<div class='table-responsive-sm'>" +
+            "<table class='table'>" +
+            body +
+            "</table>" +
+            "</div>" +
+            "</div>" +
+            "<vr>" +
+            "<div class='col'>" +
+            "<div class='table-responsive-sm'>" +
+            body2 +
+            "</table>" +
+            "</div>" +
+            "</div>" +
+            "</div>" +
+            '</div>' +
             '<div class="col-sm-1"></div>' +
             '</div>' +
             '</div>' +
@@ -61,6 +64,7 @@ function llamadas(details) {
     var path = '';
     var type = '';
     var body = '';
+    var body2 = '';
     var business = '';
     var img = '';
     var id = '';
@@ -79,11 +83,13 @@ function llamadas(details) {
             path = join.tracks[j].path;
             type = join.tracks[j].type;
             business = join.tracks[j].application.business;
-            body = JSON.stringify(join.tracks[j]);
             tool = "MELIDATA";
             img = "img/md.png";
             id = join.tracks[j].id;
-            impresion(id, img, tool, path, type, business, body);
+            body += "<div id="+id+" class="+id+"></div>";
+            impresion(id, img, tool, path, type, business, body, body2);
+
+            $("."+id+"").jJsonViewer(JSON.stringify(join.tracks[j]));
         }
     } else if (details.method == "POST" && details.url == 'https://www.google-analytics.com/collect') {
         var url = new URL('http://www.ml.com.ar/?' + decodeURIComponent(dec.decode(details.requestBody.raw[0].bytes)));
@@ -93,23 +99,80 @@ function llamadas(details) {
         tool = "GOOGLE ANALYTICS";
         img = "img/ga.png";
         body = "";
-        id = url.searchParams.get("z")
+        id = url.searchParams.get("z");
         var sURLVariables = decodeURIComponent(dec.decode(details.requestBody.raw[0].bytes)).split('&');
 
         $.getJSON(chrome.extension.getURL('dimensiones.json'), function(dimensions) {
-            for (var i = 0; i < sURLVariables.length; i++) {
-            var sParametro = sURLVariables[i].split('=');
-            if (!sParametro[0].indexOf("cd")) {
-                    if (business.indexOf("mercadolibre.com")) {
-                        name_dimension = dimensions["dimensions_ml"][(sParametro[0].substr(2))-1].name;    
-                    }else if (business.indexOf("mercadopago.com")) {
-                        name_dimension = dimensions["dimensions_mp"][(sParametro[0].substr(2))-1].name;    
+
+            for (var i = 0; i < dimensions["accounts"].length; i++) {
+                if (dimensions["accounts"][i].id == url.searchParams.get("tid").substr(3, 8)) {
+                    var account = dimensions["accounts"][i].name;
+                    var flag = dimensions["accounts"][i].flag;
+                    for (var j = 0; j < dimensions["accounts"][i].properties.length; j++) {
+                        if (dimensions["accounts"][i].properties[j].id == url.searchParams.get("tid").substr(-1)) {
+                            var property = dimensions["accounts"][i].properties[j].name;
+                        }
                     }
-                    body += (sParametro[0] + "->" + name_dimension + " -> " + sParametro[1]);
-                    body += "<br />";
                 }
             }
-            impresion(id, img, tool, path, type, business, body);
+
+            body += "<tr>" +
+                "<td><img class='fa-2x' src=" + flag + " height= '20px'/></td>" +
+                "<td> Account </td>" +
+                "<td>" + account + "</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td><i class='fa fa-navicon fa-2x'></i></td>" +
+                "<td> Property </td>" +
+                "<td>" + property + "</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td><i class='fa fa-user fa-2x'></i></td>" +
+                "<td> User Id </td>" +
+                "<td>" + url.searchParams.get("uid") + "</td>" +
+                "</tr>";
+
+            if (type == 'event') {
+                body += "<tr>" +
+                    "<td><i class='fa fa-folder-open fa-2x'></i></td>" +
+                    "<td> Categoría </td>" +
+                    "<td>" + url.searchParams.get("ec") + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td><i class='fa fa-external-link fa-2x'></i></td>" +
+                    "<td> Acción </td>" +
+                    "<td>" + url.searchParams.get("ea") + "</td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td><i class='fa fa-tag fa-2x'></i></td>" +
+                    "<td> Etiqueta </td>" +
+                    "<td>" + url.searchParams.get("el") + "</td>" +
+                    "</tr>";
+            }
+
+            body2 += "<h6>Custom Dimensions</h6>" +
+                "<table class='table'>" +
+                "<th>ID</th><th>Name</th><th>Value</th>";
+
+            for (var i = 0; i < sURLVariables.length; i++) {
+                var sParametro = sURLVariables[i].split('=');
+                if (!sParametro[0].indexOf("cd")) {
+                    if (business.match(/mercadoli(b|v)re(\.|$)/)) {
+                        dimension_name = dimensions["dimensions_ml"][(sParametro[0].substr(2)) - 1].name;
+                        dimension_id = dimensions["dimensions_ml"][(sParametro[0].substr(2)) - 1].id;
+                    } else if (business.match(/mercadopago(\.|$)/)) {
+                        dimension_name = dimensions["dimensions_mp"][(sParametro[0].substr(2)) - 1].name;
+                        dimension_id = dimensions["dimensions_mp"][(sParametro[0].substr(2)) - 1].id;
+                    }
+
+                    body2 += "<tr>" +
+                        "<td>" + dimension_id + "</span></td>" +
+                        "<td title='sdfksjhdf'> " + dimension_name + " </td>" +
+                        "<td>" + sParametro[1] + "</td>" +
+                        "</tr>";
+                }
+            }
+            impresion(id, img, tool, path, type, business, body, body2);
         });
     }
 

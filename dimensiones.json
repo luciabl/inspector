@@ -1,648 +1,1423 @@
 {
+"accounts" : [
+    {
+      "id": 46085787,
+      "name": "ML Argentina",
+      "flag" : "img/flag/mla.png",
+      "properties" : [
+          {
+            "id": 1,
+            "name": "MercadoLibre Argentina"
+          },
+          {
+            "id": 2,
+            "name": "MercadoPago Argentina"
+          },
+          {
+            "id": 3,
+            "name": "MercadoShops Argentina"
+          },
+          {
+            "id": 5,
+            "name": "Applications Argentina"
+          },
+          {
+            "id": 6,
+            "name": "MercadoPago SDKs"
+          }
+      ]
+    },
+    {
+        "id": 65194902,
+        "name": "ML Bolivia",
+        "flag" : "img/flag/MBO.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Argentina"
+            },
+            {
+              "id": 2,
+              "name": "Applications Bolivia"
+            }
+        ]
+      },
+      {
+        "id": 46090222,
+        "name": "ML Brasil",
+        "flag" : "img/flag/MLB.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Brasil"
+            },
+            {
+              "id": 2,
+              "name": "MercadoPago Brasil"
+            },
+            {
+              "id": 3,
+              "name": "MercadoShops Brasil"
+            },
+            {
+              "id": 5,
+              "name": "Applications Brasil"
+            },
+            {
+              "id": 6,
+              "name": "MercadoPago SDKs"
+            }
+        ]
+      },
+      {
+        "id": 46090222,
+        "name": "ML Brasil",
+        "flag" : "img/flag/MLB.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Brasil"
+            },
+            {
+              "id": 2,
+              "name": "MercadoPago Brasil"
+            },
+            {
+              "id": 3,
+              "name": "MercadoShops Brasil"
+            },
+            {
+              "id": 5,
+              "name": "Applications Brasil"
+            },
+            {
+              "id": 6,
+              "name": "MercadoPago SDKs"
+            }
+        ]
+      },
+      {
+        "id": 46085697,
+        "name": "ML Chile",
+        "flag" : "img/flag/MLC.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Chile"
+            },
+            {
+              "id": 2,
+              "name": "MercadoPago Chile"
+            },
+            {
+              "id": 3,
+              "name": "MercadoShops Chile"
+            },
+            {
+              "id": 5,
+              "name": "Applications Chile"
+            },
+            {
+              "id": 6,
+              "name": "PortalInmobiliario"
+            },
+            {
+              "id": 7,
+              "name": "MercadoPago SDKs"
+            }
+        ]
+      },
+      {
+        "id": 46087162,
+        "name": "ML Colombia",
+        "flag" : "img/flag/MCO.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Colombia"
+            },
+            {
+              "id": 2,
+              "name": "MercadoPago Colombia"
+            },
+            {
+              "id": 3,
+              "name": "MercadoShops Colombia"
+            },
+            {
+              "id": 4,
+              "name": "TuCarro Colombia"
+            },
+            {
+              "id": 5,
+              "name": "TuInmueble Colomboa"
+            },
+            {
+              "id": 6,
+              "name": "TuMoto Colombia"
+            },
+            {
+              "id": 7,
+              "name": "TuLancha Colombia"
+            },
+            {
+              "id": 9,
+              "name": "Applications Colombia"
+            },
+            {
+              "id": 10,
+              "name": "MercadoPago SDKs"
+            }
+        ]
+      },
+      {
+        "id": 46090720,
+        "name": "ML Costa Rica",
+        "flag" : "img/flag/MCR.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Costa Rica"
+            },
+            {
+              "id": 2,
+              "name": "Applications Costa Rica"
+            }
+        ]
+      },
+      {
+        "id": 74659564,
+        "name": "ML Cuba",
+        "flag" : "img/flag/MCU.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Cuba"
+            },
+            {
+              "id": 2,
+              "name": "Applications Cuba"
+            }
+        ]
+      },
+      {
+        "id": 74670979,
+        "name": "ML El Salvador",
+        "flag" : "img/flag/MSA.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre El Salvador"
+            },
+            {
+              "id": 2,
+              "name": "Applications El Salvador"
+            }
+        ]
+      },
+      {
+        "id": 65189922,
+        "name": "ML Guatemala",
+        "flag" : "img/flag/MGU.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Guatemala"
+            },
+            {
+              "id": 2,
+              "name": "Applications Guatemala"
+            }
+        ]
+      },
+      {
+        "id": 74666351,
+        "name": "ML Honduras",
+        "flag" : "img/flag/MHO.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Honduras"
+            },
+            {
+              "id": 2,
+              "name": "Applications Honduras"
+            }
+        ]
+      },
+      {
+        "id": 46090517,
+        "name": "ML Mexico",
+        "flag" : "img/flag/MLM.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Mexico"
+            },
+            {
+              "id": 2,
+              "name": "MercadoPago Mexico"
+            },
+            {
+              "id": 3,
+              "name": "MercadoShops Mexico"
+            },
+            {
+              "id": 4,
+              "name": "Autoplaza Mexico"
+            },
+            {
+              "id": 6,
+              "name": "Metros Cúbicos"
+            },
+            {
+              "id": 7,
+              "name": "Applications Mexico"
+            },
+            {
+              "id": 8,
+              "name": "GuiaDInmuebles Mexico"
+            },
+            {
+              "id": 9,
+              "name": "VentajaM3 Mexico"
+            },
+            {
+              "id": 10,
+              "name": "MercadoPago SDKs"
+            }
+        ]
+      },
+      {
+        "id": 74646966,
+        "name": "ML Nicaragua",
+        "flag" : "img/flag/MNI.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Nicaragua"
+            },
+            {
+              "id": 2,
+              "name": "Applications Nicaragua"
+            }
+        ]
+      },
+      {
+        "id": 46087385,
+        "name": "ML Panama",
+        "flag" : "img/flag/MPA.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Panama"
+            },
+            {
+              "id": 2,
+              "name": "Applications Panama"
+            }
+        ]
+      },
+      {
+        "id": 65181789,
+        "name": "ML Paraguay",
+        "flag" : "img/flag/MPY.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Paraguay"
+            },
+            {
+              "id": 2,
+              "name": "Applications Paraguay"
+            }
+        ]
+      },
+      {
+        "id": 46088650,
+        "name": "ML Peru",
+        "flag" : "img/flag/MPE.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Peru"
+            },
+            {
+              "id": 3,
+              "name": "Applications Peru"
+            },
+            {
+              "id": 4,
+              "name": "MercadoPago Peru"
+            }
+        ]
+      },
+      {
+        "id": 46089137,
+        "name": "ML Portugal",
+        "flag" : "img/flag/MPO.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Portugal"
+            },
+            {
+              "id": 2,
+              "name": "Applications Portugal"
+            }
+        ]
+      },
+      {
+        "id": 46089137,
+        "name": "ML Republica Dominicana",
+        "flag" : "img/flag/MRD.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Republica Dominicana"
+            },
+            {
+              "id": 2,
+              "name": "Applications Republica Dominicana"
+            }
+        ]
+      },
+      {
+        "id": 46087653,
+        "name": "ML Uruguay",
+        "flag" : "img/flag/MLU.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Uruguay"
+            },
+            {
+              "id": 3,
+              "name": "Applications Uruguay"
+            },
+            {
+              "id": 4,
+              "name": "MercadoPago Uruguay"
+            }
+        ]
+      },
+      {
+        "id": 46090035,
+        "name": "ML Venezuela",
+        "flag" : "img/flag/MLV.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Venezuela"
+            },
+            {
+              "id": 2,
+              "name": "MercadoPago Venezuela"
+            },
+            {
+              "id": 3,
+              "name": "MercadoShops Venezuela"
+            },
+            {
+              "id": 4,
+              "name": "TuCarro Venezuela"
+            },
+            {
+              "id": 5,
+              "name": "TuInmueble Cúbicos"
+            },
+            {
+              "id": 6,
+              "name": "TuMoto Venezuela"
+            },
+            {
+              "id": 7,
+              "name": "TuLancha Venezuela"
+            },
+            {
+              "id": 9,
+              "name": "Applications Venezuela"
+            },
+            {
+              "id": 10,
+              "name": "MercadoPago SDKs"
+            }
+        ]
+      }
+],
 "dimensions_ml": [
       {
         "id": 1,
-        "name": "User-Agent"
+        "name": "DeviceLayout",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 2,
-        "name": "User-Agent"
+        "name": "Logged",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 3,
-        "name": "User-Agent"
+        "name": "CategoryL1",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 4,
-        "name": "User-Agent"
+        "name": "CategoryL2",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 5,
-        "name": "User-Agent"
+        "name": "CategoryL3",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 6,
-        "name": "User-Agent"
+        "name": "PageLayout",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 7,
-        "name": "User-Agent"
+        "name": "Business",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 8,
-        "name": "User-Agent"
+        "name": "PageVertical",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 9,
-        "name": "User-Agent"
+        "name": "OfficialStore",
+        "description":"Tienda oficial",
+        "type": "Hit"
       },
       {
         "id": 10,
-        "name": "User-Agent"
+        "name": "Feedback",
+        "description":"Concretion + calification",
+        "type": "Hit"
       },
       {
         "id": 11,
-        "name": "User-Agent"
+        "name": "CategoryL4",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 12,
-        "name": "User-Agent"
+        "name": "PrivatePage",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 13,
-        "name": "User-Agent"
+        "name": "ConnectionType",
+        "description":"Mobile connection type eg: 3g, wifi",
+        "type": "Hit"
       },
       {
         "id": 14,
-        "name": "User-Agent"
+        "name": "PaymentsQuantity",
+        "description":"Payments quantity selected",
+        "type": "Hit"
       },
       {
         "id": 15,
-        "name": "User-Agent"
+        "name": "UserType",
+        "description":"From users api",
+        "type": "Sesion"
       },
       {
         "id": 16,
-        "name": "User-Agent"
+        "name": "SellerProfile",
+        "description":"Define seller experience",
+        "type": "Hit"
       },
       {
         "id": 17,
-        "name": "User-Agent"
+        "name": "SellFlowType",
+        "description":"List, similar, etc",
+        "type": "Hit"
       },
       {
         "id": 18,
-        "name": "User-Agent"
+        "name": "BuyEqualsPay",
+        "description":"Feature on/off",
+        "type": "Hit"
       },
       {
         "id": 19,
-        "name": "User-Agent"
+        "name": "ListingType",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 20,
-        "name": "User-Agent"
-      },{
+        "name": "ListingSource",
+        "description":"",
+        "type": "Hit"
+      },
+      {
         "id": 21,
-        "name": "User-Agent"
+        "name": "SearchConfig",
+        "description":"",
+        "type": "Sesion"
       },
       {
         "id": 22,
-        "name": "User-Agent"
+        "name": "FirstPageListingCount",
+        "description":"Listing # in first page",
+        "type": "Sesion"
       },
       {
         "id": 23,
-        "name": "User-Agent"
+        "name": "Experiment1",
+        "description":"Google Experiments dimension",
+        "type": "Sesion"
       },
       {
         "id": 24,
-        "name": "User-Agent"
+        "name": "Experiment2",
+        "description":"Google Experiments dimension",
+        "type": "Sesion"
       },
       {
         "id": 25,
-        "name": "User-Agent"
+        "name": "Experiment3",
+        "description":"Google Experiments dimension",
+        "type": "Sesion"
       },
       {
         "id": 26,
-        "name": "User-Agent"
+        "name": "Experiment4",
+        "description":"Google Experiments dimension",
+        "type": "Sesion"
       },
       {
         "id": 27,
-        "name": "User-Agent"
+        "name": "Experiment5",
+        "description":"Google Experiments dimension",
+        "type": "Sesion"
       },
       {
         "id": 28,
-        "name": "User-Agent"
+        "name": "Experiment6",
+        "description":"Google Experiments dimension",
+        "type": "Hit"
       },
       {
         "id": 29,
-        "name": "User-Agent"
+        "name": "Experiment7",
+        "description":"Google Experiments dimension",
+        "type": "Usuario"
       },
       {
         "id": 30,
-        "name": "User-Agent"
+        "name": "Experiment8",
+        "description":"Google Experiments dimension",
+        "type": "Sesion"
       },{
         "id": 31,
-        "name": "User-Agent"
+        "name": "Experiment9",
+        "description":"Google Experiments dimension",
+        "type": "Sesion"
       },
       {
         "id": 32,
-        "name": "User-Agent"
+        "name": "Experiment10",
+        "description":"Google Experiments dimension",
+        "type": "Sesion"
       },
       {
         "id": 33,
-        "name": "User-Agent"
+        "name": "ecommerceMejoradoDim1",
+        "description":"",
+        "type": "Producto"
       },
       {
         "id": 34,
-        "name": "User-Agent"
+        "name": "ecommerceMejoradoDim2",
+        "description":"",
+        "type": "Producto"
       },
       {
         "id": 35,
-        "name": "User-Agent"
+        "name": "ItemSellerType",
+        "description":"Define tipo de usuario que publico el item que se visualiza",
+        "type": "Hit"
       },
       {
         "id": 36,
-        "name": "esta es la 36 :)"
+        "name": "User-Agent",
+        "description":"User agent",
+        "type": "Hit"
       },
       {
         "id": 37,
-        "name": "User-Agent"
+        "name": "ShippingMode",
+        "description":"Tipo de envio disponible que tiene ese item (por ej custom, me2, not-specified, none)",
+        "type": "Hit"
       },
       {
         "id": 38,
-        "name": "User-Agent"
+        "name": "BuyingMode",
+        "description":"Indica si es compra inmediata o subasta",
+        "type": "Hit"
       },
       {
         "id": 39,
-        "name": "User-Agent"
+        "name": "ItemStatus",
+        "description":"Estado del item (active, pending, finalized, etc)",
+        "type": "Hit"
       },
       {
         "id": 40,
-        "name": "User-Agent"
+        "name": "Bank",
+        "description":"Banco",
+        "type": "Hit"
       },
       {
         "id": 41,
-        "name": "User-Agent"
+        "name": "PaymentMethod",
+        "description":"Metodo de pago",
+        "type": "Hit"
       },
       {
         "id": 42,
-        "name": "User-Agent"
+        "name": "Installments",
+        "description":"Cuotas",
+        "type": "Hit"
       },
       {
         "id": 43,
-        "name": "User-Agent"
+        "name": "FreeShipping",
+        "description":"Indica si es envío gratuito o no",
+        "type": "Hit"
       },
       {
         "id": 44,
-        "name": "User-Agent"
+        "name": "ShippingMethod",
+        "description":"Indica el metodo del envío",
+        "type": "Hit"
       },
       {
         "id": 45,
-        "name": "User-Agent"
+        "name": "ShippingLocalPickup",
+        "description":"Indica si tiene disponible local pickup",
+        "type": "Hit"
       },
       {
         "id": 46,
-        "name": "User-Agent"
+        "name": "ApparelGender",
+        "description":"Indica que genero selecciona el usuario en la home de moda de apparel en web mobile",
+        "type": "Hit"
       },
       {
         "id": 47,
-        "name": "User-Agent"
+        "name": "InternationalDeliveryMode",
+        "description":"Indica el tipo de envio internacional si es DDP o DDU (en caso que el item sea de CBT, caso contraria indica none)",
+        "type": "Hit"
       },
       {
         "id": 48,
-        "name": "User-Agent"
+        "name": "ItemDeals",
+        "description":"Indica los deals que tiene ese item",
+        "type": "Hit"
       },
       {
         "id": 49,
-        "name": "User-Agent"
+        "name": "ProtectYourAccountCelNumberOptions",
+        "description":"Indica las diferentes opciones de protección de cuenta",
+        "type": "Hit"
       },
       {
         "id": 50,
-        "name": "User-Agent"
+        "name": "SearchFilters",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 51,
-        "name": "User-Agent"
+        "name": "ItemCondition",
+        "description":"Indica la condicion del item",
+        "type": "Hit"
       },
       {
         "id": 52,
-        "name": "User-Agent"
+        "name": "PaymentType",
+        "description":"Indica el tipo de pago (credit_card, debit_card, ticket, atm, cash, bank_transfer)",
+        "type": "Hit"
       },
       {
         "id": 53,
-        "name": "User-Agent"
+        "name": "ShippingType",
+        "description":"Indica el tipo de envio (mercadoenvios, store_pick_up (retiro en sucursal), custom, free_shipping, to_agree, local_pick_up)",
+        "type": "Hit"
       },
       {
         "id": 54,
-        "name": "User-Agent"
+        "name": "GiftCard",
+        "description":"Indica si se uso una giftcard",
+        "type": "Hit"
       },
       {
         "id": 55,
-        "name": "User-Agent"
+        "name": "BillingInfo",
+        "description":"Indica el estado de billing del user en billing (con facturas vencidas, pendientes, ambas, etc)",
+        "type": "Hit"
       },
       {
         "id": 56,
-        "name": "User-Agent"
+        "name": "BillingAssociatedPayments",
+        "description":"Indica la seleccion que tiene asociada el user en billing (MercadoPago / Credit Card / None / MercadoPago & CreditCard)",
+        "type": "Hit"
       },
       {
         "id": 57,
-        "name": "User-Agent"
+        "name": "BillingCreditCardOption",
+        "description":"Indica si el user tenia en billing la opcion de tarjeta de credito disponible",
+        "type": "Hit"
       },
       {
         "id": 58,
-        "name": "User-Agent"
+        "name": "StoreType",
+        "description":"Indica si es una tienda oficial",
+        "type": "Hit"
       },
       {
         "id": 59,
-        "name": "User-Agent"
+        "name": "FlowVersion",
+        "description":"Indica en que version del flow de vender esta el usuario",
+        "type": "Hit"
       },
       {
         "id": 60,
-        "name": "User-Agent"
-      },{
+        "name": "SelectedDiscount",
+        "description":"Indica el descuento de la iniciativa Suggested Discounts: notificaciones push a los sellers para que ofrezcan descuentos",
+        "type": "Hit"
+      },
+      {
         "id": 61,
-        "name": "User-Agent"
+        "name": "Variations",
+        "description":"Indica si la vip contiene alguna variacion, por ejemplo memoria, 16gb o 8gb",
+        "type": "Hit"
       },
       {
         "id": 62,
-        "name": "User-Agent"
+        "name": "CartContent",
+        "description":"En el caso de VIP indica si es un item apto para carrito. En el caso de MyML si se muestra contenido de una orden de tipo carrito",
+        "type": "Hit"
       },
       {
         "id": 63,
-        "name": "User-Agent"
+        "name": "LoyaltyLevel",
+        "description":"Indica el nivel de Loyalty que tiene el comprador",
+        "type": "Hit"
       },
       {
         "id": 64,
-        "name": "User-Agent"
+        "name": "IsEmpty",
+        "description":"Indica si el carrito de compras se encuentra vacio",
+        "type": "Hit"
       },
       {
         "id": 65,
-        "name": "User-Agent"
+        "name": "PacksQuantity",
+        "description":"Indica la cantidad de paquetes que se arman para un determinado carrito",
+        "type": "Hit"
       },
       {
         "id": 66,
-        "name": "User-Agent"
+        "name": "FreeShippingBenefit",
+        "description":"Hay items que tienen free shipping una vez que el comprador logra determinado level de loyalty",
+        "type": "Hit"
       },
       {
         "id": 67,
-        "name": "User-Agent"
+        "name": "Resolution",
+        "description":"Indica la resolucion con la que se usa la aplicacion",
+        "type": "Hit"
       },
       {
         "id": 68,
-        "name": "User-Agent"
+        "name": "PurchaseStatus",
+        "description":"Indica el estado de un Purchase en MyML (pendiente de pago, etc)",
+        "type": "Hit"
       },
       {
         "id": 69,
-        "name": "User-Agent"
+        "name": "PrechargedCards",
+        "description":"Indica en el CHO de Carrito si se utilizan tarjetas pre cargadas",
+        "type": "Hit"
       },
       {
         "id": 70,
-        "name": "User-Agent"
-      },{
+        "name": "PaymentSplitted",
+        "description":"Indica si en el Carrito se divide el pago en dos por el tema del split de cuotas con y sin interes",
+        "type": "Hit"
+      },
+      {
         "id": 71,
-        "name": "User-Agent"
+        "name": "SellerMercadoLider",
+        "description":"Indica si el vendedor es mercadolider",
+        "type": "Hit"
       },
       {
         "id": 72,
-        "name": "User-Agent"
+        "name": "ReputationLevel",
+        "description":"indica el nivel del termometro del vendedor",
+        "type": "Hit"
       },
       {
         "id": 73,
-        "name": "User-Agent"
+        "name": "Fulfillment",
+        "description":"indica si el item tiene el servicio",
+        "type": "Hit"
       },
       {
         "id": 74,
-        "name": "User-Agent"
+        "name": "QuotationAvailable",
+        "description":"indica si el item se puede cotizar",
+        "type": "Hit"
       },
       {
         "id": 75,
-        "name": "esta es la 36 :)"
+        "name": "AvailableConsumerCredit",
+        "description":"indica si el usr tiene credits o no",
+        "type": "Hit"
       },
       {
         "id": 76,
-        "name": "User-Agent"
+        "name": "DeviceLowEnd",
+        "description":"",
+        "type": "Sesion"
       },
       {
         "id": 77,
-        "name": "User-Agent"
+        "name": "ShippingPreference",
+        "description":"Indica el método de envio de preferencia",
+        "type": "Hit"
       },
       {
         "id": 78,
-        "name": "User-Agent"
+        "name": "AppLite",
+        "description":"indica si el track viene de la app lite",
+        "type": "Sesión"
       },
       {
         "id": 79,
-        "name": "User-Agent"
+        "name": "CongratsStatus",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 80,
-        "name": "User-Agent"
+        "name": "ReturnTypification",
+        "description":"Indica el porqué de una devolución",
+        "type": "Hit"
       },
       {
         "id": 81,
-        "name": "User-Agent"
+        "name": "ReturnPayment",
+        "description":"Indica el forma de depósito del dinero de una devolución ",
+        "type": "Hit"
       },
       {
         "id": 82,
-        "name": "User-Agent"
+        "name": "ReturnShipping",
+        "description":"Indica el forma de envío del producto de una devolución",
+        "type": "Hit"
       },
       {
         "id": 83,
-        "name": "User-Agent"
+        "name": "ReservationAvailable",
+        "description":"Indica si el item se puede reservar",
+        "type": "Hit"
       },
       {
         "id": 84,
-        "name": "User-Agent"
+        "name": "AvailableSubscription",
+        "description":"Indica si es un item suscriptible",
+        "type": "Hit"
       },
       {
         "id": 85,
-        "name": "User-Agent"
+        "name": "ReturnAvailable",
+        "description":"Indica si tiene disponible devolución",
+        "type": "Hit"
       },
       {
         "id": 86,
-        "name": "User-Agent"
+        "name": "CategoryDomain",
+        "description":"Indica la Categoria de dominio",
+        "type": "Hit"
       },
       {
         "id": 87,
-        "name": "User-Agent"
+        "name": "LifetimeValueBucket",
+        "description":"Dimension que esta a prueba",
+        "type": "Hit"
       },
       {
         "id": 88,
-        "name": "User-Agent"
+        "name": "PreviousScreenPath",
+        "description":"Indica la ruta de la pantalla anterior para nativo",
+        "type": "Hit"
       },
       {
         "id": 89,
-        "name": "User-Agent"
+        "name": "FlowSource",
+        "description":"Marcar el origen en el flow de venta en nativo",
+        "type": "Hit"
       },
       {
         "id": 90,
-        "name": "User-Agent"
+        "name": "MercadoLider",
+        "description":"Informa el tipo de mercado lider:platinum,gold,silver",
+        "type": "Hit"
       },
       {
         "id": 91,
-        "name": "User-Agent"
+        "name": "ZodiacCLV",
+        "description":"Dimension necesaria para la Integracion con Zodiac",
+        "type": "Usuario"
       },
       {
         "id": 92,
-        "name": "User-Agent"
+        "name": "ZodiacRLV",
+        "description":"Dimension necesaria para la Integracion con Zodiac",
+        "type": "Usuario"
       },
       {
         "id": 93,
-        "name": "User-Agent"
+        "name": "ChannelSegment",
+        "description":"Segmento del usuario en modulo de channel (top on, top off, best seller, etc.)",
+        "type": "Hit"
       },
       {
         "id": 94,
-        "name": "User-Agent"
+        "name": "ChannelSubSegment",
+        "description":"Subsegmento del modulo de channel",
+        "type": "Hit"
       },
       {
         "id": 95,
-        "name": "User-Agent"
+        "name": "PortalTitle",
+        "description":"Titulo de la faq del user",
+        "type": "Hit"
       },
       {
         "id": 96,
-        "name": "User-Agent"
+        "name": "PortalContact",
+        "description":"Indica si el user tenia disponible la opcion de contacto y cuales tenia disponibles",
+        "type": "Hit"
       },
       {
         "id": 97,
-        "name": "User-Agent"
+        "name": "PortalSourceID",
+        "description":"Indica desde donde se llamo al portal (myml, etc.)",
+        "type": "Hit"
       },
       {
         "id": 98,
-        "name": "User-Agent"
+        "name": "PortalProblemID",
+        "description":"Indica el id del problema del portal",
+        "type": "Hit"
       },
       {
         "id": 99,
-        "name": "User-Agent"
+        "name": "Coupon",
+        "description":"Envia tipo de cupon",
+        "type": "Hit"
       },
       {
         "id": 100,
-        "name": "User-Agent"
-      },{
+        "name": "CheckoutFlow",
+        "description":"Guarda el flujo de checkout al que pertenece la instancia",
+        "type": "Hit"
+      },
+      {
         "id": 101,
-        "name": "User-Agent"
+        "name": "ComparatorAvailable",
+        "description":"Se usa para identificar del total de Vip de motors cuantas con ComparatorAvailable fueron visitadas, generaron eventos, reservas, etc",
+        "type": "Hit"
       },
       {
         "id": 102,
-        "name": "User-Agent"
+        "name": "HotjarID",
+        "description":"",
+        "type": "Usuario"
       },
       {
         "id": 103,
-        "name": "User-Agent"
+        "name": "UserID",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 104,
-        "name": "User-Agent"
+        "name": "AccountMoneyCombination",
+        "description":"Se usa para identificar si le mostraron al usuario la posibilidad de pagar con dinero en cuenta.Se envia en pagina:payments de CHO",
+        "type": "Hit"
       }
     ],
 "dimensions_mp": [
       {
         "id": 1,
-        "name": "User-Agent"
+        "name": "DeviceLayout",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 2,
-        "name": "User-Agent"
+        "name": "Logged",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 3,
-        "name": "User-Agent"
+        "name": "FlowType",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 4,
-        "name": "User-Agent"
+        "name": "CampaingId",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 5,
-        "name": "User-Agent"
+        "name": "CreditCard",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 6,
-        "name": "User-Agent"
+        "name": "Installments",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 7,
-        "name": "User-Agent"
+        "name": "Bank",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 8,
-        "name": "User-Agent"
+        "name": "PaymentStatus",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 9,
-        "name": "User-Agent"
+        "name": "paymentStatusDetail",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 10,
-        "name": "User-Agent"
+        "name": "AdvancedFilters",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 11,
-        "name": "User-Agent"
+        "name": "isSplit",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 12,
-        "name": "User-Agent"
+        "name": "coupon",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 13,
-        "name": "User-Agent"
+        "name": "ConnectionType",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 14,
-        "name": "User-Agent"
+        "name": "collectorNickname",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 15,
-        "name": "User-Agent"
+        "name": "isGuestUser",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 16,
-        "name": "User-Agent"
+        "name": "paymentTypeId",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 17,
-        "name": "User-Agent"
+        "name": "paymentInstallments",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 18,
-        "name": "User-Agent"
+        "name": "paymentIssuerID",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 19,
-        "name": "User-Agent"
+        "name": "paymentMethodId",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 20,
-        "name": "User-Agent"
-      },{
+        "name": "operationType",
+        "description":"",
+        "type": "Hit"
+      },
+      {
         "id": 21,
-        "name": "User-Agent"
+        "name": "ShippingMode",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 22,
-        "name": "User-Agent"
+        "name": "Experiment1",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 23,
-        "name": "User-Agent"
+        "name": "Experiment2",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 24,
-        "name": "User-Agent"
+        "name": "Experiment3",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 25,
-        "name": "User-Agent"
+        "name": "Experiment4",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 26,
-        "name": "User-Agent"
+        "name": "Experiment5",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 27,
-        "name": "User-Agent"
+        "name": "Experiment6",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 28,
-        "name": "User-Agent"
+        "name": "Experiment7",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 29,
-        "name": "User-Agent"
+        "name": "Experiment8",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 30,
-        "name": "User-Agent"
-      },{
+        "name": "Experiment9",
+        "description":"",
+        "type": "Hit"
+      },
+      {
         "id": 31,
-        "name": "User-Agent"
+        "name": "Experiment10",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 32,
-        "name": "User-Agent"
+        "name": "paymentOptionId",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 33,
-        "name": "User-Agent"
+        "name": "RegistrationType",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 34,
-        "name": "User-Agent"
+        "name": "CheckoutOpenMode",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 35,
-        "name": "User-Agent"
+        "name": "PayerID",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 36,
-        "name": "esta es la 36 :)"
+        "name": "RegistrationCustId",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 37,
-        "name": "User-Agent"
+        "name": "UserProfile",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 38,
-        "name": "User-Agent"
+        "name": "MposProduct",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 39,
-        "name": "User-Agent"
+        "name": "CreditCardWizard",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 40,
-        "name": "User-Agent"
+        "name": "Operators",
+        "description":"",
+        "type": "Sesion"
       },
       {
         "id": 41,
-        "name": "User-Agent"
+        "name": "CollectorSubType",
+        "description":"",
+        "type": "Sesion"
       },
       {
         "id": 42,
-        "name": "User-Agent"
+        "name": "ProfessionalUser",
+        "description":"",
+        "type": "Sesion"
       },
       {
         "id": 43,
-        "name": "User-Agent"
+        "name": "UserPlatform",
+        "description":"",
+        "type": "Sesion"
       },
       {
         "id": 44,
-        "name": "User-Agent"
+        "name": "CobrandedStatusScored",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 45,
-        "name": "User-Agent"
+        "name": "CobrandedFase",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 46,
-        "name": "User-Agent"
+        "name": "ResultStatus",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 47,
-        "name": "User-Agent"
+        "name": "StatusDetail",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 48,
-        "name": "User-Agent"
+        "name": "From",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 49,
-        "name": "User-Agent"
+        "name": "DeviceLowEnd",
+        "description":"",
+        "type": "Sesion"
       },
       {
         "id": 50,
-        "name": "User-Agent"
+        "name": "MoneyAvailableToAdvance",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 51,
-        "name": "User-Agent"
+        "name": "PortalProblemID",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 52,
-        "name": "User-Agent"
+        "name": "UserID",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 53,
-        "name": "User-Agent"
+        "name": "ChannelSegment",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 54,
-        "name": "User-Agent"
+        "name": "ChannelSubSegment",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 55,
-        "name": "User-Agent"
+        "name": "PortalTitle",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 56,
-        "name": "User-Agent"
+        "name": "PortalContact",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 57,
-        "name": "User-Agent"
+        "name": "PortaSourceID",
+        "description":"",
+        "type": "Hit"
       },
       {
         "id": 58,
-        "name": "User-Agent"
+        "name": "Libre para usar",
+        "description":"",
+        "type": "Hit"
       }
     ]
 }
-
