@@ -11,6 +11,26 @@ function impresion(id, img, tool, path, type, business, body, body2) {
     } else if (business.match(/mercadopago(\.|$)/)) {
         business = 'img/mp.png'
     } else { business = '' }
+    var subbody;
+    if (tool == 'MELIDATA') {
+        subbody = '<div class="col-sm-1"></div><div class="col-sm-10">' +
+            body +
+            "</div><div class='col-sm-1'></div>";
+    } else {
+        subbody = '<div class="col-sm-1"></div><div class="col-sm-4">' +
+            "<h6>Details</h6>" +
+            "<table class='table'>" +
+            body +
+            "</table>" +
+            "</div>" +
+
+            "<div class='col-sm-6'>" +
+
+            body2 +
+            "</table>" +
+
+            "</div>";
+    }
 
     if (business != '') {
         $(".accordion").append(
@@ -32,30 +52,11 @@ function impresion(id, img, tool, path, type, business, body, body2) {
             '<div id="' + id + '" class="collapse">' +
             '<div class="card-body">' +
             '<div class="row">' +
-            '<div class="col-sm-1"></div>' +
-            '<div class="col-sm-10">' +
-            "<div class='row'>" +
-            "<div class='col'>" +
-            "<h6>Details</h6>" +
-            "<div class='table-responsive-sm'>" +
-            "<table class='table'>" +
-            body +
-            "</table>" +
-            "</div>" +
-            "</div>" +
-            "<vr>" +
-            "<div class='col'>" +
-            "<div class='table-responsive-sm'>" +
-            body2 +
-            "</table>" +
-            "</div>" +
-            "</div>" +
-            "</div>" +
-            '</div>' +
-            '<div class="col-sm-1"></div>' +
+            subbody +
             '</div>' +
             '</div>' +
-            '</div>');
+            '</div>'
+        );
     }
 }
 
@@ -86,10 +87,10 @@ function llamadas(details) {
             tool = "MELIDATA";
             img = "img/md.png";
             id = join.tracks[j].id;
-            body += "<div id="+id+" class="+id+"></div>";
+            body += "<div id=" + id + " class=" + id + "></div>";
             impresion(id, img, tool, path, type, business, body, body2);
 
-            $("."+id+"").jJsonViewer(JSON.stringify(join.tracks[j]));
+            $("." + id + "").jJsonViewer(JSON.stringify(join.tracks[j]));
         }
     } else if (details.method == "POST" && details.url == 'https://www.google-analytics.com/collect') {
         var url = new URL('http://www.ml.com.ar/?' + decodeURIComponent(dec.decode(details.requestBody.raw[0].bytes)));
