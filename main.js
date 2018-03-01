@@ -100,8 +100,11 @@ function llamadas(details) {
             for (var i = 0; i < sURLVariables.length; i++) {
             var sParametro = sURLVariables[i].split('=');
             if (!sParametro[0].indexOf("cd")) {
-                    console.log(dimensions["dimensions_ml"][(sParametro[0].substr(2))-1].name);
-                    name_dimension = dimensions["dimensions_ml"][(sParametro[0].substr(2))-1].name;
+                    if (business.indexOf("mercadolibre.com")) {
+                        name_dimension = dimensions["dimensions_ml"][(sParametro[0].substr(2))-1].name;    
+                    }else if (business.indexOf("mercadopago.com")) {
+                        name_dimension = dimensions["dimensions_mp"][(sParametro[0].substr(2))-1].name;    
+                    }
                     body += (sParametro[0] + "->" + name_dimension + " -> " + sParametro[1]);
                     body += "<br />";
                 }
