@@ -2,6 +2,21 @@
     INSPECTOR v0.0.1
  */
 
+function lee_dimension_json(id, business) {
+    var name = '';
+    id--;
+
+    $.getJSON("dimensiones.json", function(result) {
+        name = (result);
+        // console.log (id);
+        // console.log (result["dimensions_ml"][id].id + result["dimensions_ml"][id].name);
+    });
+
+    return name
+}
+
+
+
 function impresion(id, img, tool, path, type, business, body) {
     if (type.indexOf("view") > -1) {
         type = 'pageview'
@@ -80,24 +95,24 @@ function llamadas(details) {
         body = "";
         id = url.searchParams.get("z")
         var sURLVariables = decodeURIComponent(dec.decode(details.requestBody.raw[0].bytes)).split('&');
-        for (var i = 0; i < sURLVariables.length; i++) {
+
+        $.getJSON(chrome.extension.getURL('dimensiones.json'), function(dimensions) {
+            for (var i = 0; i < sURLVariables.length; i++) {
             var sParametro = sURLVariables[i].split('=');
-            if (!sParametro[0].indexOf("cd") || sParametro[0] == 'tid' || sParametro[0] == 'uid') {
-                body += (sParametro[0] + " -> " + sParametro[1]);
-                body += "<br />";
+            if (!sParametro[0].indexOf("cd")) {
+                    console.log(dimensions["dimensions_ml"][(sParametro[0].substr(2))-1].name);
+                    name_dimension = dimensions["dimensions_ml"][(sParametro[0].substr(2))-1].name;
+                    body += (sParametro[0] + "->" + name_dimension + " -> " + sParametro[1]);
+                    body += "<br />";
+                }
             }
-        }
-        impresion(id, img, tool, path, type, business, body);
+            impresion(id, img, tool, path, type, business, body);
+        });
     }
+
     //api dimensions:
     //https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/customDimensions/get
     //https://www.googleapis.com/analytics/v3/management/accounts/46085787/webproperties/UA-46085787-1/customDimensions/ga:dimension2
-
-
-    /*      for (i = 0; i < parsedJSON.tracks.length; i++) {
-                 console.log(parsedJSON.tracks[i].path + ' - ' + parsedJSON.tracks[i].type + ' - ' + parsedJSON.tracks[i].application.business);
-            }
-    */
 }
 
 chrome.webRequest.onBeforeRequest.addListener(llamadas, { urls: ["https://*.mercadolibre.com/*", "https://*.google-analytics.com/*"] }, ['blocking', 'requestBody']);
