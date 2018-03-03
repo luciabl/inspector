@@ -22,8 +22,10 @@ function impresion(id, img, tool, path, type, business, body, body2) {
             "<table class='table'>" +
             body +
             "</table>" +
+            
             "</div>" +
 
+            
             "<div class='col-sm-6'>" +
 
             body2 +
@@ -74,6 +76,10 @@ function llamadas(details) {
     var join = '';
     var j = 0;
     var i = 0;
+    var url = '';
+    var sURLVariables = '';
+   // console.log(details);
+
     if (details.method == "POST" && details.url == 'https://data.mercadolibre.com/tracks') {
         for (i = 0; i < details.requestBody.raw.length; i++) {
             joinBuffer += ((String.fromCharCode.apply(null,
@@ -92,8 +98,15 @@ function llamadas(details) {
 
             $("." + id + "").jJsonViewer(JSON.stringify(join.tracks[j]));
         }
-    } else if (details.method == "POST" && details.url == 'https://www.google-analytics.com/collect') {
-        var url = new URL('http://www.ml.com.ar/?' + decodeURIComponent(dec.decode(details.requestBody.raw[0].bytes)));
+    } else if (details.url.match(/\/collect/)) {
+        if (details.url.match(/collect\?v=/)){
+        	url = new URL(details.url);
+        	sURLVariables = details.url;
+        }else{
+        	url = new URL('http://www.ml.com.ar/?' + decodeURIComponent(dec.decode(details.requestBody.raw[0].bytes)));
+        	sURLVariables = decodeURIComponent(dec.decode(details.requestBody.raw[0].bytes)).split('&');
+        }
+
         path = url.searchParams.get("dp");
         type = url.searchParams.get("t");
         business = url.searchParams.get("dl")
@@ -101,7 +114,7 @@ function llamadas(details) {
         img = "img/ga.png";
         body = "";
         id = url.searchParams.get("z");
-        var sURLVariables = decodeURIComponent(dec.decode(details.requestBody.raw[0].bytes)).split('&');
+        //var sURLVariables = decodeURIComponent(dec.decode(details.requestBody.raw[0].bytes)).split('&');
 
         $.getJSON(chrome.extension.getURL('dimensiones.json'), function(dimensions) {
 
@@ -158,12 +171,15 @@ function llamadas(details) {
             for (var i = 0; i < sURLVariables.length; i++) {
                 var sParametro = sURLVariables[i].split('=');
                 if (!sParametro[0].indexOf("cd")) {
-                    if (business.match(/mercadoli(b|v)re(\.|$)/)) {
+                    if (business.match(/www\.mercadoli(b|v)re\./)) {
                         dimension_name = dimensions["dimensions_ml"][(sParametro[0].substr(2)) - 1].name;
                         dimension_id = dimensions["dimensions_ml"][(sParametro[0].substr(2)) - 1].id;
-                    } else if (business.match(/mercadopago(\.|$)/)) {
+                    } else if (business.match(/www\.mercadopago\./)) {
                         dimension_name = dimensions["dimensions_mp"][(sParametro[0].substr(2)) - 1].name;
                         dimension_id = dimensions["dimensions_mp"][(sParametro[0].substr(2)) - 1].id;
+                    } else if (business.match(/developers\.mercadolibre/)) {
+                    	dimension_name = dimensions["dimensions_devs"][(sParametro[0].substr(2)) - 1].name;
+                        dimension_id = dimensions["dimensions_devs"][(sParametro[0].substr(2)) - 1].id;
                     }
 
                     body2 += "<tr>" +
@@ -183,3 +199,6 @@ function llamadas(details) {
 }
 
 chrome.webRequest.onBeforeRequest.addListener(llamadas, { urls: ["https://*.mercadolibre.com/*", "https://*.google-analytics.com/*"] }, ['blocking', 'requestBody']);
+
+
+

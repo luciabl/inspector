@@ -1,6 +1,49 @@
 {
 "accounts" : [
     {
+      "id": 74595852,
+      "name": "MercadoLibre Other Sites",
+      "flag" : "img/flag/mla.png",
+      "properties" : [
+          {
+            "id": 1,
+            "name": "MercadoLibre Developers"
+          },
+          {
+            "id": 2,
+            "name": "Blog Ideas Mercado Libre"
+          },
+          {
+            "id": 3,
+            "name": "MercadoPago Developers"
+          },
+          {
+            "id": 4,
+            "name": "Blog MercadoPago"
+          },
+          {
+            "id": 5,
+            "name": "MercadoPago Service Status"
+          },
+          {
+            "id": 6,
+            "name": "Sustentabilidad"
+          },
+          {
+            "id": 7,
+            "name": "Tutoriales"
+          },
+          {
+            "id": 8,
+            "name": "MercadoEnvios Backoffice"
+          },
+          {
+            "id": 9,
+            "name": "Full Stack Tech Conference"
+          }
+      ]
+    },
+    {
       "id": 46085787,
       "name": "ML Argentina",
       "flag" : "img/flag/mla.png",
@@ -1416,6 +1459,44 @@
       {
         "id": 58,
         "name": "Libre para usar",
+        "description":"",
+        "type": "Hit"
+      }
+    ],
+"dimensions_devs": [
+      {
+        "id": 1,
+        "name": "Device",
+        "description":"",
+        "type": "Hit"
+      },
+      {
+        "id": 2,
+        "name": "CountryDomain",
+        "description":"",
+        "type": "Hit"
+      },
+      {
+        "id": 3,
+        "name": "SiteID",
+        "description":"",
+        "type": "Hit"
+      },
+      {
+        "id": 4,
+        "name": "UserId",
+        "description":"",
+        "type": "Sesion"
+      },
+      {
+        "id": 5,
+        "name": "UserNickname",
+        "description":"",
+        "type": "Sesion"
+      },
+      {
+        "id": 6,
+        "name": "isLogged",
         "description":"",
         "type": "Hit"
       }
