@@ -50,23 +50,33 @@
       "properties" : [
           {
             "id": 1,
-            "name": "MercadoLibre Argentina"
+            "name": "MercadoLibre Argentina",
+            "id_w": "76984013",
+            "id_p": "79573625"
           },
           {
             "id": 2,
-            "name": "MercadoPago Argentina"
+            "name": "MercadoPago Argentina",
+            "id_w": "76981949",
+            "id_p": "79569869"
           },
           {
             "id": 3,
-            "name": "MercadoShops Argentina"
+            "name": "MercadoShops Argentina",
+            "id_w": "76984702",
+            "id_p": "79571855"
           },
           {
             "id": 5,
-            "name": "Applications Argentina"
+            "name": "Applications Argentina",
+            "id_w": "107611180",
+            "id_p": "112170617"
           },
           {
             "id": 6,
-            "name": "MercadoPago SDKs"
+            "name": "MercadoPago SDKs",
+            "id_w": "117457124",
+            "id_p": "123437413"
           }
       ]
     },

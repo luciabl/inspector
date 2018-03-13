@@ -2,7 +2,7 @@
     INSPECTOR v0.0.1
  */
 
-function impresion(id, img, tool, path, type, business, body, body2) {
+function impresion(id, img, tool, path, type, business, body, body2, link) {
     if (type.indexOf("view") > -1) {
         type = 'pageview'
     }
@@ -22,10 +22,7 @@ function impresion(id, img, tool, path, type, business, body, body2) {
             "<table class='table'>" +
             body +
             "</table>" +
-            
             "</div>" +
-
-            
             "<div class='col-sm-6'>" +
 
             body2 +
@@ -38,24 +35,25 @@ function impresion(id, img, tool, path, type, business, body, body2) {
         $(".accordion").append(
             '<div class="card">' +
             '<div class="card-header">' +
-            '<a class="collapsed card-link" data-toggle="collapse" data-parent="#accordion" href="#' + id + '">' +
-            '<div class="row">' +
-            '<div class="col-sm-1"></div>' +
-            '<div class="col-sm-1 text-center"><img class="size-img" src="' + img + '"/></div>' +
-            '<div class="col-sm-2 text-center">' + tool + '</div>' +
-            '<div class="col-sm-3 text-center">' + path + '</div>' +
-            '<div class="col-sm-2 text-center">' + type + '</div>' +
-            '<div class="col-sm-1 text-center"><img class="size-img" src="' + business + '"/></div>' +
-            '<div class="col-sm-1"></div>' +
-            '<div class="col-sm-1"><i class="fa fa-info" style="font-size:24px"></i></div>' +
-            '</div>' +
-            '</a>' +
+                '<a class="collapsed card-link" data-toggle="collapse" data-parent="#accordion" href="#' + id + '">' +
+                    '<div class="row">' +
+                        '<div class="col-sm-1"></div>' +
+                        '<div class="col-sm-1 text-center"><img class="size-img" src="' + img + '"/></div>' +
+                        '<div class="col-sm-2 text-center">' + tool + '</div>' +
+                        '<div class="col-sm-3 text-center">' + path + '</div>' +
+                        '<div class="col-sm-2 text-center">' + type + '</div>' +
+                        '<div class="col-sm-1 text-center"><img class="size-img" src="' + business + '"/></div>' +
+                        '<div class="col-sm-1"></div>' +
+                        '<div class="col-sm-1"><i class="fa fa-info" style="font-size:24px"></i></div>' +
+                    '</div>' +
+                '</a>' +
             '</div>' +
             '<div id="' + id + '" class="collapse">' +
-            '<div class="card-body">' +
-            '<div class="row">' +
-            subbody +
-            '</div>' +
+                '<div class="card-body">' +
+                    '<div class="row">' +
+                    subbody +
+                    '</div>' +
+                '</div>' +
             '</div>' +
             '</div>'
         );
@@ -78,6 +76,7 @@ function llamadas(details) {
     var i = 0;
     var url = '';
     var sURLVariables = '';
+    var link = '';
    // console.log(details);
 
     if (details.method == "POST" && details.url == 'https://data.mercadolibre.com/tracks') {
@@ -94,7 +93,7 @@ function llamadas(details) {
             img = "img/md.png";
             id = join.tracks[j].id;
             body += "<div id=" + id + " class=" + id + "></div>";
-            impresion(id, img, tool, path, type, business, body, body2);
+            impresion(id, img, tool, path, type, business, body, body2, link);
 
             $("." + id + "").jJsonViewer(JSON.stringify(join.tracks[j]));
         }
@@ -122,15 +121,24 @@ function llamadas(details) {
                 if (dimensions["accounts"][i].id == url.searchParams.get("tid").substr(3, 8)) {
                     var account = dimensions["accounts"][i].name;
                     var flag = dimensions["accounts"][i].flag;
+                    var a = dimensions["accounts"][i].id;
                     for (var j = 0; j < dimensions["accounts"][i].properties.length; j++) {
                         if (dimensions["accounts"][i].properties[j].id == url.searchParams.get("tid").substr(-1)) {
                             var property = dimensions["accounts"][i].properties[j].name;
+                            var w = dimensions["accounts"][i].properties[j].id_w;
+                            var p = dimensions["accounts"][i].properties[j].id_p;
                         }
                     }
                 }
             }
-
+            link = '<a href="https://analytics.google.com/analytics/web/#report/content-pages/a'+a+'w'+w+'p'+p+'/%3Fexplorer-table.plotKeys%3D%5B%5D%26_r.drilldown%3Danalytics.pagePath%3A'+encodeURIComponent(path)+'/"  target="_blank">link</a>';
+            
             body += "<tr>" +
+                "<td><i class='fa fa-angle-right fa-2x'></i></td>" +
+                "<td> Path </td>" +
+                "<td>" + path + "</td>" +
+                "</tr>" +
+                "<tr>" +
                 "<td><img class='fa-2x' src=" + flag + " height= '20px'/></td>" +
                 "<td> Account </td>" +
                 "<td>" + account + "</td>" +
@@ -144,6 +152,11 @@ function llamadas(details) {
                 "<td><i class='fa fa-user fa-2x'></i></td>" +
                 "<td> User Id </td>" +
                 "<td>" + url.searchParams.get("uid") + "</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td><i class='fa fa-external-link fa-2x'></i></td>" +
+                "<td> View in GA </td>" +
+                "<td>" + link + "</td>" +
                 "</tr>";
 
             if (type == 'event') {
@@ -164,6 +177,21 @@ function llamadas(details) {
                     "</tr>";
             }
 
+           // body += "<a href='https://analytics.google.com/analytics/web/#report/content-pages/a46085787w76981949p97514140/%3Fexplorer-table.filter%3D%2FMPFRONT%2FACTIVITIES%2F%26explorer-table.plotKeys%3D%5B%5D/' target='_blank'>informe</a>";
+    
+
+            
+    
+
+
+            //var a = 23123123;
+            //var w = 1312334;
+            //var p = 123444;
+
+            //console.log(encode);
+            //console.log
+            //("https://analytics.google.com/analytics/web/#report/content-pages/a"+a+"w"+w+"p"+p+"/?explorer-table.filter="+path+"&explorer-table.plotKeys=[]/");
+
             body2 += "<h6>Custom Dimensions</h6>" +
                 "<table class='table'>" +
                 "<th>ID</th><th>Name</th><th>Value</th>";
@@ -171,7 +199,8 @@ function llamadas(details) {
             for (var i = 0; i < sURLVariables.length; i++) {
                 var sParametro = sURLVariables[i].split('=');
                 if (!sParametro[0].indexOf("cd")) {
-                    if (business.match(/www\.mercadoli(b|v)re\./)) {
+                	console.log(business);
+                    if (business.match(/mercadoli(b|v)re\./)) {
                         dimension_name = dimensions["dimensions_ml"][(sParametro[0].substr(2)) - 1].name;
                         dimension_id = dimensions["dimensions_ml"][(sParametro[0].substr(2)) - 1].id;
                     } else if (business.match(/www\.mercadopago\./)) {
@@ -189,7 +218,7 @@ function llamadas(details) {
                         "</tr>";
                 }
             }
-            impresion(id, img, tool, path, type, business, body, body2);
+            impresion(id, img, tool, path, type, business, body, body2, link);
         });
     }
 
