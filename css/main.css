@@ -329,3 +329,10 @@ a:hover {
 .size-img {
 	height: 20px;
 }
+
+@media screen and (max-width: 800px) {
+  body {
+    background: peru;
+    border: 15px solid lightblue;
+  }
+}

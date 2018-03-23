@@ -3,50 +3,68 @@
     {
       "id": 74595852,
       "name": "MercadoLibre Other Sites",
-      "flag" : "img/flag/mla.png",
+      "flag" : "img/flag/MLA.png",
       "properties" : [
           {
             "id": 1,
-            "name": "MercadoLibre Developers"
+            "name": "MercadoLibre Developers",
+            "id_w": "112797778",
+            "id_p": "119690176"
           },
           {
             "id": 2,
-            "name": "Blog Ideas Mercado Libre"
+            "name": "Blog Ideas Mercado Libre",
+            "id_w": "142991706",
+            "id_p": "155932985"
           },
           {
             "id": 3,
-            "name": "MercadoPago Developers"
+            "name": "MercadoPago Developers",
+            "id_w": "147938040",
+            "id_p": "152817961"
           },
           {
             "id": 4,
-            "name": "Blog MercadoPago"
+            "name": "Blog MercadoPago",
+            "id_w": "147957991",
+            "id_p": "152798719"
           },
           {
             "id": 5,
-            "name": "MercadoPago Service Status"
+            "name": "MercadoPago Service Status",
+            "id_w": "150464992",
+            "id_p": "155434940"
           },
           {
             "id": 6,
-            "name": "Sustentabilidad"
+            "name": "Sustentabilidad",
+            "id_w": "156332971",
+            "id_p": "157925898"
           },
           {
             "id": 7,
-            "name": "Tutoriales"
+            "name": "Tutoriales",
+            "id_w": "117457124",
+            "id_p": "123437413"
           },
           {
             "id": 8,
-            "name": "MercadoEnvios Backoffice"
+            "name": "MercadoEnvios Backoffice",
+            "id_w": "158131790",
+            "id_p": "159552338"
           },
           {
             "id": 9,
-            "name": "Full Stack Tech Conference"
+            "name": "Full Stack Tech Conference",
+            "id_w": "163433943",
+            "id_p": "164307329"
           }
       ]
     },
     {
       "id": 46085787,
       "name": "ML Argentina",
-      "flag" : "img/flag/mla.png",
+      "flag" : "img/flag/MLA.png",
       "properties" : [
           {
             "id": 1,
@@ -87,11 +105,15 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre Argentina"
+              "name": "MercadoLibre Bolivia",
+              "id_w": "101357071",
+              "id_p": "105424915"
             },
             {
               "id": 2,
-              "name": "Applications Bolivia"
+              "name": "Applications Bolivia",
+              "id_w": "107674209",
+              "id_p": "112112090"
             }
         ]
       },
@@ -102,50 +124,33 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre Brasil"
+              "name": "MercadoLibre Brasil",
+              "id_w": "76981459",
+              "id_p": "79571770"
             },
             {
               "id": 2,
-              "name": "MercadoPago Brasil"
+              "name": "MercadoPago Brasil",
+              "id_w": "76979590",
+              "id_p": "79574022"
             },
             {
               "id": 3,
-              "name": "MercadoShops Brasil"
+              "name": "MercadoShops Brasil",
+              "id_w": "76981170",
+              "id_p": "79574133"
             },
             {
               "id": 5,
-              "name": "Applications Brasil"
+              "name": "Applications Brasil",
+              "id_w": "107658073",
+              "id_p": "112157269"
             },
             {
               "id": 6,
-              "name": "MercadoPago SDKs"
-            }
-        ]
-      },
-      {
-        "id": 46090222,
-        "name": "ML Brasil",
-        "flag" : "img/flag/MLB.png",
-        "properties" : [
-            {
-              "id": 1,
-              "name": "MercadoLibre Brasil"
-            },
-            {
-              "id": 2,
-              "name": "MercadoPago Brasil"
-            },
-            {
-              "id": 3,
-              "name": "MercadoShops Brasil"
-            },
-            {
-              "id": 5,
-              "name": "Applications Brasil"
-            },
-            {
-              "id": 6,
-              "name": "MercadoPago SDKs"
+              "name": "MercadoPago SDKs",
+              "id_w": "117458508",
+              "id_p": "122855620"
             }
         ]
       },
@@ -156,27 +161,39 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre Chile"
+              "name": "MercadoLibre Chile",
+              "id_w": "76978398",
+              "id_p": "79574130"
             },
             {
               "id": 2,
-              "name": "MercadoPago Chile"
+              "name": "MercadoPago Chile",
+              "id_w": "76978690",
+              "id_p": "97529340"
             },
             {
               "id": 3,
-              "name": "MercadoShops Chile"
+              "name": "MercadoShops Chile",
+              "id_w": "76984218",
+              "id_p": "79575017"
             },
             {
               "id": 5,
-              "name": "Applications Chile"
+              "name": "Applications Chile",
+              "id_w": "107634783",
+              "id_p": "112131693"
             },
             {
               "id": 6,
-              "name": "PortalInmobiliario"
+              "name": "PortalInmobiliario",
+              "id_w": "171390309",
+              "id_p": "171140059"
             },
             {
               "id": 7,
-              "name": "MercadoPago SDKs"
+              "name": "MercadoPago SDKs",
+              "id_w": "117408592",
+              "id_p": "122862402"
             }
         ]
       },
@@ -187,39 +204,57 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre Colombia"
+              "name": "MercadoLibre Colombia",
+              "id_w": "76982235",
+              "id_p": "79570984"
             },
             {
               "id": 2,
-              "name": "MercadoPago Colombia"
+              "name": "MercadoPago Colombia",
+              "id_w": "76979076",
+              "id_p": "79573535"
             },
             {
               "id": 3,
-              "name": "MercadoShops Colombia"
+              "name": "MercadoShops Colombia",
+              "id_w": "76982346",
+              "id_p": "79572750"
             },
             {
               "id": 4,
-              "name": "TuCarro Colombia"
+              "name": "TuCarro Colombia",
+              "id_w": "76982349",
+              "id_p": "79570088"
             },
             {
               "id": 5,
-              "name": "TuInmueble Colomboa"
+              "name": "TuInmueble Colombia",
+              "id_w": "76984909",
+              "id_p": "79573746"
             },
             {
               "id": 6,
-              "name": "TuMoto Colombia"
+              "name": "TuMoto Colombia",
+              "id_w": "76983350",
+              "id_p": "79575423"
             },
             {
               "id": 7,
-              "name": "TuLancha Colombia"
+              "name": "TuLancha Colombia",
+              "id_w": "76980970",
+              "id_p": "79575715"
             },
             {
               "id": 9,
-              "name": "Applications Colombia"
+              "name": "Applications Colombia",
+              "id_w": "107611591",
+              "id_p": "112180302"
             },
             {
               "id": 10,
-              "name": "MercadoPago SDKs"
+              "name": "MercadoPago SDKs",
+              "id_w": "117457214",
+              "id_p": "122854530"
             }
         ]
       },
@@ -230,11 +265,15 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre Costa Rica"
+              "name": "MercadoLibre Costa Rica",
+              "id_w": "76985009",
+              "id_p": "79570484"
             },
             {
               "id": 2,
-              "name": "Applications Costa Rica"
+              "name": "Applications Costa Rica",
+              "id_w": "107643279",
+              "id_p": "112177507"
             }
         ]
       },
@@ -245,11 +284,34 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre Cuba"
+              "name": "MercadoLibre Cuba",
+              "id_w": "112865488",
+              "id_p": "117990698"
             },
             {
               "id": 2,
-              "name": "Applications Cuba"
+              "name": "Applications Cuba",
+              "id_w": "112936041",
+              "id_p": "117928563"
+            }
+        ]
+      },
+      {
+        "id": 46091900,
+        "name": "ML Ecuador",
+        "flag" : "img/flag/MEC.png",
+        "properties" : [
+            {
+              "id": 1,
+              "name": "MercadoLibre Ecuador",
+              "id_w": "76979297",
+              "id_p": "79570096"
+            },
+            {
+              "id": 2,
+              "name": "Applications Ecuador",
+              "id_w": "107625478",
+              "id_p": "112150782"
             }
         ]
       },
@@ -260,11 +322,15 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre El Salvador"
+              "name": "MercadoLibre El Salvador",
+              "id_w": "112922857",
+              "id_p": "11791148"
             },
             {
               "id": 2,
-              "name": "Applications El Salvador"
+              "name": "Applications El Salvador",
+              "id_w": "112900503",
+              "id_p": "117988299"
             }
         ]
       },
@@ -275,11 +341,15 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre Guatemala"
+              "name": "MercadoLibre Guatemala",
+              "id_w": "101360914",
+              "id_p": "105510289"
             },
             {
               "id": 2,
-              "name": "Applications Guatemala"
+              "name": "Applications Guatemala",
+              "id_w": "107625984",
+              "id_p": "112137482"
             }
         ]
       },
@@ -290,11 +360,15 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre Honduras"
+              "name": "MercadoLibre Honduras",
+              "id_w": "112871994",
+              "id_p": "117992392"
             },
             {
               "id": 2,
-              "name": "Applications Honduras"
+              "name": "Applications Honduras",
+              "id_w": "112915683",
+              "id_p": "117913896"
             }
         ]
       },
@@ -305,39 +379,57 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre Mexico"
+              "name": "MercadoLibre Mexico",
+              "id_w": "76985400",
+              "id_p": "79572057"
             },
             {
               "id": 2,
-              "name": "MercadoPago Mexico"
+              "name": "MercadoPago Mexico",
+              "id_w": "76979289",
+              "id_p": "97521643"
             },
             {
               "id": 3,
-              "name": "MercadoShops Mexico"
+              "name": "MercadoShops Mexico",
+              "id_w": "76985602",
+              "id_p": "79572463"
             },
             {
               "id": 4,
-              "name": "Autoplaza Mexico"
+              "name": "Autoplaza Mexico",
+              "id_w": "77875299",
+              "id_p": "80561826"
             },
             {
               "id": 6,
-              "name": "Metros Cúbicos"
+              "name": "Metros Cúbicos",
+              "id_w": "104726477",
+              "id_p": "108954287"
             },
             {
               "id": 7,
-              "name": "Applications Mexico"
+              "name": "Applications Mexico",
+              "id_w": "107730815",
+              "id_p": "112220840"
             },
             {
               "id": 8,
-              "name": "GuiaDInmuebles Mexico"
+              "name": "GuiaDInmuebles Mexico",
+              "id_w": "108169429",
+              "id_p": "112701431"
             },
             {
               "id": 9,
-              "name": "VentajaM3 Mexico"
+              "name": "VentajaM3 Mexico",
+              "id_w": "110262472",
+              "id_p": "115043306"
             },
             {
               "id": 10,
-              "name": "MercadoPago SDKs"
+              "name": "MercadoPago SDKs",
+              "id_w": "117429994",
+              "id_p": "122862302"
             }
         ]
       },
@@ -348,11 +440,15 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre Nicaragua"
+              "name": "MercadoLibre Nicaragua",
+              "id_w": "112851994",
+              "id_p": "118052506"
             },
             {
               "id": 2,
-              "name": "Applications Nicaragua"
+              "name": "Applications Nicaragua",
+              "id_w": "112902989",
+              "id_p": "117958306"
             }
         ]
       },
@@ -363,11 +459,15 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre Panama"
+              "name": "MercadoLibre Panama",
+              "id_w": "76982464",
+              "id_p": "79575826"
             },
             {
               "id": 2,
-              "name": "Applications Panama"
+              "name": "Applications Panama",
+              "id_w": "107707061",
+              "id_p": "112201671"
             }
         ]
       },
@@ -378,11 +478,15 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre Paraguay"
+              "name": "MercadoLibre Paraguay",
+              "id_w": "101357278",
+              "id_p": "105514738"
             },
             {
               "id": 2,
-              "name": "Applications Paraguay"
+              "name": "Applications Paraguay",
+              "id_w": "107815101",
+              "id_p": "112310908"
             }
         ]
       },
@@ -393,15 +497,21 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre Peru"
+              "name": "MercadoLibre Peru",
+              "id_w": "76982845",
+              "id_p": "79571787"
             },
             {
               "id": 3,
-              "name": "Applications Peru"
+              "name": "Applications Peru",
+              "id_w": "107717049",
+              "id_p": "112209996"
             },
             {
               "id": 4,
-              "name": "MercadoPago Peru"
+              "name": "MercadoPago Peru",
+              "id_w": "118610646",
+              "id_p": "124284127"
             }
         ]
       },
@@ -412,11 +522,15 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre Portugal"
+              "name": "MercadoLibre Portugal",
+              "id_w": "76983238",
+              "id_p": "79570993"
             },
             {
               "id": 2,
-              "name": "Applications Portugal"
+              "name": "Applications Portugal",
+              "id_w": "107690984",
+              "id_p": "112232436"
             }
         ]
       },
@@ -427,11 +541,15 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre Republica Dominicana"
+              "name": "MercadoLibre Republica Dominicana",
+              "id_w": "76982463",
+              "id_p": "79571872"
             },
             {
               "id": 2,
-              "name": "Applications Republica Dominicana"
+              "name": "Applications Republica Dominicana",
+              "id_w": "107736317",
+              "id_p": "112223069"
             }
         ]
       },
@@ -442,15 +560,21 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre Uruguay"
+              "name": "MercadoLibre Uruguay",
+              "id_w": "76982043",
+              "id_p": "79574432"
             },
             {
               "id": 3,
-              "name": "Applications Uruguay"
+              "name": "Applications Uruguay",
+              "id_w": "107759918",
+              "id_p": "112249660"
             },
             {
               "id": 4,
-              "name": "MercadoPago Uruguay"
+              "name": "MercadoPago Uruguay",
+              "id_w": "125622719",
+              "id_p": "129796093"
             }
         ]
       },
@@ -461,39 +585,57 @@
         "properties" : [
             {
               "id": 1,
-              "name": "MercadoLibre Venezuela"
+              "name": "MercadoLibre Venezuela",
+              "id_w": "76981363",
+              "id_p": "79573647"
             },
             {
               "id": 2,
-              "name": "MercadoPago Venezuela"
+              "name": "MercadoPago Venezuela",
+              "id_w": "76998090",
+              "id_p": "79592143"
             },
             {
               "id": 3,
-              "name": "MercadoShops Venezuela"
+              "name": "MercadoShops Venezuela",
+              "id_w": "77005601",
+              "id_p": "79589197"
             },
             {
               "id": 4,
-              "name": "TuCarro Venezuela"
+              "name": "TuCarro Venezuela",
+              "id_w": "77005510",
+              "id_p": "79595209"
             },
             {
               "id": 5,
-              "name": "TuInmueble Cúbicos"
+              "name": "TuInmueble Cúbicos",
+              "id_w": "77002450",
+              "id_p": "79595917"
             },
             {
               "id": 6,
-              "name": "TuMoto Venezuela"
+              "name": "TuMoto Venezuela",
+              "id_w": "77004624",
+              "id_p": "90810033"
             },
             {
               "id": 7,
-              "name": "TuLancha Venezuela"
+              "name": "TuLancha Venezuela",
+              "id_w": "77006103",
+              "id_p": "79595920"
             },
             {
               "id": 9,
-              "name": "Applications Venezuela"
+              "name": "Applications Venezuela",
+              "id_w": "107769003",
+              "id_p": "112264829"
             },
             {
               "id": 10,
-              "name": "MercadoPago SDKs"
+              "name": "MercadoPago SDKs",
+              "id_w": "117410586",
+              "id_p": "122807995"
             }
         ]
       }
@@ -1121,6 +1263,12 @@
         "name": "AccountMoneyCombination",
         "description":"Se usa para identificar si le mostraron al usuario la posibilidad de pagar con dinero en cuenta.Se envia en pagina:payments de CHO",
         "type": "Hit"
+      },
+        {
+        "id": 105,
+        "name": "ScreenDensity",
+        "description":"Se está usando en el CHO para enviar los DPI del user",
+        "type": "Sesion"
       }
     ],
 "dimensions_mp": [

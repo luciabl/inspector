@@ -1,0 +1,1 @@
+chrome.devtools.panels.create("Inspector", "img/128.png", "index.html");

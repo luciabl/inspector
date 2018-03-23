@@ -2,7 +2,7 @@
     INSPECTOR v0.0.1
  */
 
-function impresion(id, img, tool, path, type, business, body, body2, link) {
+function impresion(id, img, tool, path, type, business, body, body2, link, isValid) {
     if (type.indexOf("view") > -1) {
         type = 'pageview'
     }
@@ -11,6 +11,15 @@ function impresion(id, img, tool, path, type, business, body, body2, link) {
     } else if (business.match(/mercadopago(\.|$)/)) {
         business = 'img/mp.png'
     } else { business = '' }
+
+    if (isValid == 'valid') {
+        isValid = '<i class="fa fa-circle" style="color:green;"></i>'
+    }else if (isValid == 'notValid') {
+        isValid = '<i class="fa fa-circle" style="color:red;"></i>'
+    }else{
+        isValid = ''
+    }
+
     var subbody;
     if (tool == 'MELIDATA') {
         subbody = '<div class="col-sm-1"></div><div class="col-sm-10">' +
@@ -35,25 +44,25 @@ function impresion(id, img, tool, path, type, business, body, body2, link) {
         $(".accordion").append(
             '<div class="card">' +
             '<div class="card-header">' +
-                '<a class="collapsed card-link" data-toggle="collapse" data-parent="#accordion" href="#' + id + '">' +
-                    '<div class="row">' +
-                        '<div class="col-sm-1"></div>' +
-                        '<div class="col-sm-1 text-center"><img class="size-img" src="' + img + '"/></div>' +
-                        '<div class="col-sm-2 text-center">' + tool + '</div>' +
-                        '<div class="col-sm-3 text-center">' + path + '</div>' +
-                        '<div class="col-sm-2 text-center">' + type + '</div>' +
-                        '<div class="col-sm-1 text-center"><img class="size-img" src="' + business + '"/></div>' +
-                        '<div class="col-sm-1"></div>' +
-                        '<div class="col-sm-1"><i class="fa fa-info" style="font-size:24px"></i></div>' +
-                    '</div>' +
-                '</a>' +
+            '<a class="collapsed card-link" data-toggle="collapse" data-parent="#accordion" href="#' + id + '">' +
+            '<div class="row">' +
+            '<div class="col-sm-1 text-center"><img class="size-img" src="' + img + '"/></div>' +
+            '<div class="col-sm-2 text-center">' + tool + '</div>' +
+            '<div class="col-sm-1 text-center">' + isValid + '</div>' +
+            '<div class="col-sm-3 text-center">' + path + '</div>' +
+            '<div class="col-sm-2 text-center">' + type + '</div>' +
+            '<div class="col-sm-1 text-center"><img class="size-img" src="' + business + '"/></div>' +
+            '<div class="col-sm-1"></div>' +
+            '<div class="col-sm-1"><i class="fa fa-info" style="font-size:24px"></i></div>' +
+            '</div>' +
+            '</a>' +
             '</div>' +
             '<div id="' + id + '" class="collapse">' +
-                '<div class="card-body">' +
-                    '<div class="row">' +
-                    subbody +
-                    '</div>' +
-                '</div>' +
+            '<div class="card-body">' +
+            '<div class="row">' +
+            subbody +
+            '</div>' +
+            '</div>' +
             '</div>' +
             '</div>'
         );
@@ -77,7 +86,8 @@ function llamadas(details) {
     var url = '';
     var sURLVariables = '';
     var link = '';
-   // console.log(details);
+    var isValid = false;
+    var formData = {};
 
     if (details.method == "POST" && details.url == 'https://data.mercadolibre.com/tracks') {
         for (i = 0; i < details.requestBody.raw.length; i++) {
@@ -85,28 +95,52 @@ function llamadas(details) {
                 new Uint8Array(details.requestBody.raw[i].bytes))));
         }
         join = JSON.parse(joinBuffer);
+
         for (j = 0; j < join.tracks.length; j++) {
-            path = join.tracks[j].path;
-            type = join.tracks[j].type;
-            business = join.tracks[j].application.business;
-            tool = "MELIDATA";
-            img = "img/md.png";
-            id = join.tracks[j].id;
-            body += "<div id=" + id + " class=" + id + "></div>";
-            impresion(id, img, tool, path, type, business, body, body2, link);
 
-            $("." + id + "").jJsonViewer(JSON.stringify(join.tracks[j]));
+            formData = join.tracks[j];
+
+            $.ajax(
+            {
+              async: false,
+              url : 'https://api.mercadolibre.com/melidata/catalog/validate',
+              type: "POST",
+              contentType: 'application/json; charset=utf-8',
+              dataType: 'json',
+              data : JSON.stringify(join.tracks[j])
+            })
+            .always(function(data) {
+                path = formData.path;
+                type = formData.type;
+                business = formData.application.business;
+                tool = "MELIDATA";
+                img = "img/md.png";
+                id = formData.id;
+                body += "<div id=" + id + " class=" + id + "></div>";
+                if (data.status == 400){
+                    isValid = 'notValid'     
+                }else{
+                    isValid = 'valid'             
+                }
+                impresion(id, img, tool, path, type, business, body, body2, link, isValid)
+                $("." + id + "").jJsonViewer(JSON.stringify(formData));
+            })
+    
+            
+            
+
         }
+
     } else if (details.url.match(/\/collect/)) {
-        if (details.url.match(/collect\?v=/)){
-        	url = new URL(details.url);
-        	sURLVariables = details.url;
-        }else{
-        	url = new URL('http://www.ml.com.ar/?' + decodeURIComponent(dec.decode(details.requestBody.raw[0].bytes)));
-        	sURLVariables = decodeURIComponent(dec.decode(details.requestBody.raw[0].bytes)).split('&');
+        if (details.url.match(/collect\?v=/)) {
+            url = new URL(details.url);
+            sURLVariables = details.url;
+        } else {
+            url = new URL('http://www.ml.com.ar/?' + decodeURIComponent(dec.decode(details.requestBody.raw[0].bytes)));
+            sURLVariables = decodeURIComponent(dec.decode(details.requestBody.raw[0].bytes)).split('&');
         }
 
-        path = url.searchParams.get("dp");
+        path = url.searchParams.get("dp").replace(/\?.*/,"");
         type = url.searchParams.get("t");
         business = url.searchParams.get("dl")
         tool = "GOOGLE ANALYTICS";
@@ -131,15 +165,15 @@ function llamadas(details) {
                     }
                 }
             }
-            link = '<a href="https://analytics.google.com/analytics/web/#report/content-pages/a'+a+'w'+w+'p'+p+'/%3Fexplorer-table.plotKeys%3D%5B%5D%26_r.drilldown%3Danalytics.pagePath%3A'+encodeURIComponent(path)+'/"  target="_blank">link</a>';
-            
+            link = '<a href="https://analytics.google.com/analytics/web/#report/content-pages/a' + a + 'w' + w + 'p' + p + '/%3Fexplorer-table.plotKeys%3D%5B%5D%26_r.drilldown%3Danalytics.pagePath%3A' + encodeURIComponent(path) + '/"  target="_blank">link</a>';
+
             body += "<tr>" +
                 "<td><i class='fa fa-angle-right fa-2x'></i></td>" +
                 "<td> Path </td>" +
                 "<td>" + path + "</td>" +
                 "</tr>" +
                 "<tr>" +
-                "<td><img class='fa-2x' src=" + flag + " height= '20px'/></td>" +
+                "<td><img class='fa-2x' src=" + flag + " height= '25px'/></td>" +
                 "<td> Account </td>" +
                 "<td>" + account + "</td>" +
                 "</tr>" +
@@ -152,46 +186,33 @@ function llamadas(details) {
                 "<td><i class='fa fa-user fa-2x'></i></td>" +
                 "<td> User Id </td>" +
                 "<td>" + url.searchParams.get("uid") + "</td>" +
-                "</tr>" +
-                "<tr>" +
-                "<td><i class='fa fa-external-link fa-2x'></i></td>" +
-                "<td> View in GA </td>" +
-                "<td>" + link + "</td>" +
                 "</tr>";
+                
 
-            if (type == 'event') {
+            if ((type == 'event')|| (type == 'EVENT')) {
                 body += "<tr>" +
                     "<td><i class='fa fa-folder-open fa-2x'></i></td>" +
-                    "<td> Categoría </td>" +
+                    "<td> Category </td>" +
                     "<td>" + url.searchParams.get("ec") + "</td>" +
                     "</tr>" +
                     "<tr>" +
                     "<td><i class='fa fa-external-link fa-2x'></i></td>" +
-                    "<td> Acción </td>" +
+                    "<td> Action </td>" +
                     "<td>" + url.searchParams.get("ea") + "</td>" +
                     "</tr>" +
                     "<tr>" +
                     "<td><i class='fa fa-tag fa-2x'></i></td>" +
-                    "<td> Etiqueta </td>" +
+                    "<td> Label </td>" +
                     "<td>" + url.searchParams.get("el") + "</td>" +
                     "</tr>";
             }
 
-           // body += "<a href='https://analytics.google.com/analytics/web/#report/content-pages/a46085787w76981949p97514140/%3Fexplorer-table.filter%3D%2FMPFRONT%2FACTIVITIES%2F%26explorer-table.plotKeys%3D%5B%5D/' target='_blank'>informe</a>";
-    
-
+            body += "<tr>" +
+                "<td><i class='fa fa-external-link fa-2x'></i></td>" +
+                "<td> View in GA </td>" +
+                "<td>" + link + "</td>" +
+                "</tr>";
             
-    
-
-
-            //var a = 23123123;
-            //var w = 1312334;
-            //var p = 123444;
-
-            //console.log(encode);
-            //console.log
-            //("https://analytics.google.com/analytics/web/#report/content-pages/a"+a+"w"+w+"p"+p+"/?explorer-table.filter="+path+"&explorer-table.plotKeys=[]/");
-
             body2 += "<h6>Custom Dimensions</h6>" +
                 "<table class='table'>" +
                 "<th>ID</th><th>Name</th><th>Value</th>";
@@ -199,7 +220,7 @@ function llamadas(details) {
             for (var i = 0; i < sURLVariables.length; i++) {
                 var sParametro = sURLVariables[i].split('=');
                 if (!sParametro[0].indexOf("cd")) {
-                	console.log(business);
+                    console.log(business);
                     if (business.match(/mercadoli(b|v)re\./)) {
                         dimension_name = dimensions["dimensions_ml"][(sParametro[0].substr(2)) - 1].name;
                         dimension_id = dimensions["dimensions_ml"][(sParametro[0].substr(2)) - 1].id;
@@ -207,7 +228,7 @@ function llamadas(details) {
                         dimension_name = dimensions["dimensions_mp"][(sParametro[0].substr(2)) - 1].name;
                         dimension_id = dimensions["dimensions_mp"][(sParametro[0].substr(2)) - 1].id;
                     } else if (business.match(/developers\.mercadolibre/)) {
-                    	dimension_name = dimensions["dimensions_devs"][(sParametro[0].substr(2)) - 1].name;
+                        dimension_name = dimensions["dimensions_devs"][(sParametro[0].substr(2)) - 1].name;
                         dimension_id = dimensions["dimensions_devs"][(sParametro[0].substr(2)) - 1].id;
                     }
 
@@ -218,7 +239,7 @@ function llamadas(details) {
                         "</tr>";
                 }
             }
-            impresion(id, img, tool, path, type, business, body, body2, link);
+            impresion(id, img, tool, path, type, business, body, body2, link, isValid);
         });
     }
 
@@ -228,6 +249,3 @@ function llamadas(details) {
 }
 
 chrome.webRequest.onBeforeRequest.addListener(llamadas, { urls: ["https://*.mercadolibre.com/*", "https://*.google-analytics.com/*"] }, ['blocking', 'requestBody']);
-
-
-
