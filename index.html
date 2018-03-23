@@ -35,10 +35,10 @@
     <section class="py-5">
         <div>
             <div class="row">
+                <div class="col-sm-1"></div>
                 <div class="col-sm-1 text-center"></div>
                 <div class="col-sm-2 text-center">
                     <h5>Tool</h5></div>
-                <div class="col-sm-1"></div>
                 <div class="col-sm-3 text-center">
                     <h5>Path</h5></div>
                 <div class="col-sm-2 text-center">
@@ -55,6 +55,12 @@
 
     <script src="js/bootstrap.min.js"></script>
     <script src="main.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+    </script>
 </body>
 
 </html>

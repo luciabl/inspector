@@ -2,7 +2,7 @@
     INSPECTOR v0.0.1
  */
 
-function impresion(id, img, tool, path, type, business, body, body2, link, isValid) {
+function impresion(id, img, tool, path, type, business, body, body2, link, isValid, messagesCatalog) {
     if (type.indexOf("view") > -1) {
         type = 'pageview'
     }
@@ -13,14 +13,19 @@ function impresion(id, img, tool, path, type, business, body, body2, link, isVal
     } else { business = '' }
 
     if (isValid == 'valid') {
-        isValid = '<i class="fa fa-circle" style="color:green;"></i>'
+        description = 'Valid Track.'
+        isValid = '<i class="fa fa-circle" style="color:green;" data-toggle="tooltip" title="'+description+'"></i>'
     }else if (isValid == 'notValid') {
-        isValid = '<i class="fa fa-circle" style="color:red;"></i>'
+        description = 'Invalid Track: ';
+        description += messagesCatalog;
+        isValid = '<i class="fa fa-circle" style="color:red;" data-toggle="tooltip" title="'+description+'"></i>'
     }else{
-        isValid = ''
+        isValid = '';
+        description = '';
     }
 
     var subbody;
+
     if (tool == 'MELIDATA') {
         subbody = '<div class="col-sm-1"></div><div class="col-sm-10">' +
             body +
@@ -33,10 +38,8 @@ function impresion(id, img, tool, path, type, business, body, body2, link, isVal
             "</table>" +
             "</div>" +
             "<div class='col-sm-6'>" +
-
             body2 +
             "</table>" +
-
             "</div>";
     }
 
@@ -47,8 +50,8 @@ function impresion(id, img, tool, path, type, business, body, body2, link, isVal
             '<a class="collapsed card-link" data-toggle="collapse" data-parent="#accordion" href="#' + id + '">' +
             '<div class="row">' +
             '<div class="col-sm-1 text-center"><img class="size-img" src="' + img + '"/></div>' +
-            '<div class="col-sm-2 text-center">' + tool + '</div>' +
             '<div class="col-sm-1 text-center">' + isValid + '</div>' +
+            '<div class="col-sm-2 text-center">' + tool + '</div>' +
             '<div class="col-sm-3 text-center">' + path + '</div>' +
             '<div class="col-sm-2 text-center">' + type + '</div>' +
             '<div class="col-sm-1 text-center"><img class="size-img" src="' + business + '"/></div>' +
@@ -88,6 +91,7 @@ function llamadas(details) {
     var link = '';
     var isValid = false;
     var formData = {};
+    var messagesCatalog = '';
 
     if (details.method == "POST" && details.url == 'https://data.mercadolibre.com/tracks') {
         for (i = 0; i < details.requestBody.raw.length; i++) {
@@ -118,17 +122,17 @@ function llamadas(details) {
                 id = formData.id;
                 body += "<div id=" + id + " class=" + id + "></div>";
                 if (data.status == 400){
-                    isValid = 'notValid'     
+                    isValid = 'notValid';   
+                    for (var i = 0; i < data.responseJSON.messages.length; i++) {
+                        messagesCatalog += '\n';
+                        messagesCatalog += '- ' + data.responseJSON.messages[i]
+                    }
                 }else{
                     isValid = 'valid'             
                 }
-                impresion(id, img, tool, path, type, business, body, body2, link, isValid)
+                impresion(id, img, tool, path, type, business, body, body2, link, isValid, messagesCatalog)
                 $("." + id + "").jJsonViewer(JSON.stringify(formData));
             })
-    
-            
-            
-
         }
 
     } else if (details.url.match(/\/collect/)) {
@@ -220,7 +224,6 @@ function llamadas(details) {
             for (var i = 0; i < sURLVariables.length; i++) {
                 var sParametro = sURLVariables[i].split('=');
                 if (!sParametro[0].indexOf("cd")) {
-                    console.log(business);
                     if (business.match(/mercadoli(b|v)re\./)) {
                         dimension_name = dimensions["dimensions_ml"][(sParametro[0].substr(2)) - 1].name;
                         dimension_id = dimensions["dimensions_ml"][(sParametro[0].substr(2)) - 1].id;
@@ -239,7 +242,7 @@ function llamadas(details) {
                         "</tr>";
                 }
             }
-            impresion(id, img, tool, path, type, business, body, body2, link, isValid);
+            impresion(id, img, tool, path, type, business, body, body2, link, isValid, messagesCatalog);
         });
     }
 
