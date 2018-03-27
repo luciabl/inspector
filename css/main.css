@@ -44,7 +44,11 @@ nav a:hover {
     color: white;
 }
 
-p.navbar-grey, a.navbar-grey {
+p.navbar-grey2{
+    color: #CCCCCC;
+    font-size: 14px;
+}
+a.navbar-grey {
     color: #CCCCCC;
     font-size: 14px;
 }
@@ -404,7 +408,7 @@ label {
     padding-right: 10px;
 }
 
-.derecha{
+.derecha {
     width: 100%;
     text-align: right;
     padding-right: 20px;

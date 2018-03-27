@@ -214,13 +214,15 @@ function llamadas(details) {
                     "<td> Label </td>" +
                     "<td>" + url.searchParams.get("el") + "</td>" +
                     "</tr>";
+            } else {
+                body += "<tr>" +
+                    "<td><i class='fa fa-external-link fa-2x'></i></td>" +
+                    "<td> View in GA </td>" +
+                    "<td>" + link + "</td>" +
+                    "</tr>";
             }
 
-            body += "<tr>" +
-                "<td><i class='fa fa-external-link fa-2x'></i></td>" +
-                "<td> View in GA </td>" +
-                "<td>" + link + "</td>" +
-                "</tr>";
+
 
             body2 += "<h6>Custom Dimensions</h6>" +
                 "<table class='table'>" +
@@ -230,20 +232,20 @@ function llamadas(details) {
             for (var i = 0; i < sURLVariables.length; i++) {
                 var sParametro = sURLVariables[i].split('=');
                 if (!sParametro[0].indexOf("cd")) {
-                    dimensions_id.push({id:parseInt(sParametro[0].substr(2)), value:sParametro[1]});
+                    dimensions_id.push({ id: parseInt(sParametro[0].substr(2)), value: sParametro[1] });
                 }
             }
 
-            dimensions_id.sort(function (a, b) {
-              if (a.id > b.id) {
-                return 1;
-              }
-              if (a.id < b.id) {
-                return -1;
-              }
-              // a must be equal to b
-              return 0;
-            });              
+            dimensions_id.sort(function(a, b) {
+                if (a.id > b.id) {
+                    return 1;
+                }
+                if (a.id < b.id) {
+                    return -1;
+                }
+                // a must be equal to b
+                return 0;
+            });
 
             for (var i = 0; i < dimensions_id.length; i++) {
                 if (business.match(/mercadoli(b|v)re\./)) {
@@ -261,7 +263,7 @@ function llamadas(details) {
                     "<td>" + dimension_id + "</span></td>" +
                     "<td title='sdfksjhdf'> " + dimension_name + " </td>" +
                     "<td>" + dimensions_id[i].value + "</td>" +
-                    "</tr>";  
+                    "</tr>";
             }
 
 

@@ -1,6 +1,6 @@
 {
     "name": "Inspector",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "View tracks of Google Analytics and Melidata by Mercado Libre",
     "short_name": "Inspector",
     "author": "BA-Analytics",
