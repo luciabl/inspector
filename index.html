@@ -1,8 +1,5 @@
-<!--
-    INSPECTOR v0.0.1
--->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -20,46 +17,40 @@
 <body>
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/jjsonviewer.js"></script>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
-        <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
-            <a class="navbar-brand" href="#"> &nbsp;&nbsp;&nbsp; Inspector</a>
-            <a class="nav-link disabled" href="#">Visualización de tracks de Google Analytics y Melidata</a>
-            <img src="img/128.png" height="40" class="d-inline-block align-top" alt="">
-        </div>
-    </nav>
     <header>
-        <p></p>
+        <nav>
+            <a class="navbar-brand" href="#">Inspector</a>
+            <a class="navbar-grey" href="#">Visualización de tracks de Google Analytics y Melidata</a>
+            <img src="img/128.png" height="40" class="align-top" alt="">
+        </nav>
     </header>
-    <hr>
-    
-    <section class="py-5">
-        <div>
-            <div class="row">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-1 text-center"></div>
-                <div class="col-sm-2 text-center">
-                    <h5>Tool</h5></div>
-                <div class="col-sm-3 text-center">
-                    <h5>Path</h5></div>
-                <div class="col-sm-2 text-center">
-                    <h5>Type</h5></div>
-                <div class="col-sm-1 text-center">
-                    <h5>Business</h5></div>
-                <div class="col-sm-1 text-center"></div>
-                <div class="col-sm-1 text-center"></div>
-            </div>
-            <div id="accordion" class="accordion">
-            </div>
+    <section class="contenido wrapper">
+        <div class="alert alert-dark" role="alert">
+            <div class="row"> 
+            <div id="imgTool" class="col-sm-1 text-center"></div> 
+            <div id="idValid" class="col-sm-1 text-center">    </div> 
+            <div id="tool" class="col-sm-2 text-center">  Tool  </div> 
+            <div id="path" class="col-sm-3 text-center">  Path  </div> 
+            <div id="type" class="col-sm-2 text-center">  Type  </div> 
+            <div id="business" class="col-sm-1 text-center">  Business  </div> 
+            <div id="blank" class="col-sm-1"></div> 
+            <div id="moreInfo" class="col-sm-1"></div> 
+            </div>   
+        </div>
+        <div id="accordion" class="accordion">
         </div>
     </section>
-
     <script src="js/bootstrap.min.js"></script>
     <script src="main.js"></script>
-
     <script>
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();   
-        });
+
+ 
+
+    $(document).ready(function() {
+        $([data-toggle="tooltip"]).tooltip();
+    });
+ 
+
     </script>
 </body>
 

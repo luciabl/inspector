@@ -27,11 +27,11 @@ function impresion(id, img, tool, path, type, business, body, body2, link, isVal
     var subbody;
 
     if (tool == 'MELIDATA') {
-        subbody = '<div class="col-sm-1"></div><div class="col-sm-10">' +
+        subbody = '<div class="col-sm-12">' +
             body +
-            "</div><div class='col-sm-1'></div>";
+            "</div>";
     } else {
-        subbody = '<div class="col-sm-1"></div><div class="col-sm-4">' +
+        subbody = '<div class="col-sm-6">' +
             "<h6>Details</h6>" +
             "<table class='table'>" +
             body +
@@ -49,14 +49,14 @@ function impresion(id, img, tool, path, type, business, body, body2, link, isVal
             '<div class="card-header">' +
             '<a class="collapsed card-link" data-toggle="collapse" data-parent="#accordion" href="#' + id + '">' +
             '<div class="row">' +
-            '<div class="col-sm-1 text-center"><img class="size-img" src="' + img + '"/></div>' +
-            '<div class="col-sm-1 text-center">' + isValid + '</div>' +
-            '<div class="col-sm-2 text-center">' + tool + '</div>' +
-            '<div class="col-sm-3 text-center">' + path + '</div>' +
-            '<div class="col-sm-2 text-center">' + type + '</div>' +
-            '<div class="col-sm-1 text-center"><img class="size-img" src="' + business + '"/></div>' +
-            '<div class="col-sm-1"></div>' +
-            '<div class="col-sm-1"><i class="fa fa-info" style="font-size:24px"></i></div>' +
+            '<div id="imgTool" class="col-sm-1 text-center"><img class="size-img" src="' + img + '"/></div>' +
+            '<div id="idValid" class="col-sm-1 text-center">' + isValid + '</div>' +
+            '<div id="tool" class="col-sm-2 text-center">' + tool + '</div>' +
+            '<div id="path" class="path col-sm-3 text-center">' + path + '</div>' +
+            '<div id="type" class="col-sm-2 text-center">' + type + '</div>' +
+            '<div id="business" class="col-sm-1 text-center"><img class="size-img" src="' + business + '"/></div>' +
+            '<div id="blank" class="col-sm-1"></div>' +
+            '<div id="moreInfo" class="col-sm-1"><i class="fa fa-info" style="font-size:24px"></i></div>' +
             '</div>' +
             '</a>' +
             '</div>' +
@@ -252,3 +252,20 @@ function llamadas(details) {
 }
 
 chrome.webRequest.onBeforeRequest.addListener(llamadas, { urls: ["https://*.mercadolibre.com/*", "https://*.google-analytics.com/*"] }, ['blocking', 'requestBody']);
+
+var consulta = window.matchMedia('(max-width: 767px)');
+
+function mediaQuery(){
+        if (consulta.matches) {
+            console.log("se cumplio");
+            $('.path').attr('class', 'col-sm-10 text-center');
+          }else{
+            console.log("no se cumplio");
+          }  
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+  //document.querySelector('button').addEventListener('click', clickHandler);
+  consulta.addListener(mediaQuery);
+});
+
