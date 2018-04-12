@@ -415,7 +415,17 @@ label {
     padding-top: 10px;
 }
 
+.tooltip{
+    font-size: 12px;
+    white-space: pre-wrap;
+}
+
 @media screen and (max-width: 767px) {
+
+body{
+    border: 10px solid red;
+}
+
     .navbar-brand {
         font-size: 1rem;
     }
@@ -449,3 +459,4 @@ label {
         padding-left: 10px;
     }
 }
+

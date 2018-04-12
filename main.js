@@ -2,23 +2,32 @@
     INSPECTOR v0.0.1
  */
 
-function impresion(id, img, tool, path, type, business, body, body2, link, isValid, messagesCatalog) {
+function impresion(id, img, tool, path, type, businessurl, body, body2, link, isValid, messagesCatalog) {
+    var iconValid = '';
+    var iconColor = '';
+    var businessImg = '';
+    var business = '';
     if (type.indexOf("view") > -1) {
         type = 'pageview'
     }
-    if (business.match(/mercadoli(b|v)re(\.|$)/)) {
-        business = 'img/md.png'
-    } else if (business.match(/mercadopago(\.|$)/)) {
-        business = 'img/mp.png'
+    if (businessurl.match(/mercadoli(b|v)re(\.|$)/)) {
+        businessImg = 'img/md.png'
+        business = 'Mercado Libre'
+    } else if (businessurl.match(/mercadopago(\.|$)/)) {
+        businessImg = 'img/mp.png'
+        business = 'Mercado Pago'
     } else { business = '' }
 
     if (isValid == 'valid') {
-        description = 'Valid Track.'
-        isValid = '<i id="circleValid" class="fa fa-circle" style="color:green;" data-toggle="tooltip" title="' + description + '"></i>'
+        description = 'Valid Track';
+        iconColor = 'green';
+        isValid = '<i id="circleValid" class="fa fa-circle" style="color:green;" data-toggle="tooltip" data-placement="right"></i>';
+        iconValid = 'fa fa-check-circle-o'
     } else if (isValid == 'notValid') {
-        description = 'Invalid Track: ';
-        description += messagesCatalog;
-        isValid = '<i id="circleValid" class="fa fa-circle" style="color:red;" data-toggle="tooltip" title="' + description + '"></i>'
+        description = 'Invalid Track';
+        iconColor = 'red';
+        isValid = '<i id="circleValid" class="fa fa-circle" style="color:red;" data-toggle="tooltip" data-placement="right"></i>';
+        iconValid = 'fa fa-times-circle-o'
     } else {
         isValid = '';
         description = '';
@@ -54,7 +63,7 @@ function impresion(id, img, tool, path, type, business, body, body2, link, isVal
             '<div id="tool" class="col-sm-2 text-center">' + tool + '</div>' +
             '<div id="path" class="path col-sm-3 text-center">' + path + '</textarea></div>' +
             '<div id="type" class="col-sm-2 text-center">' + type + '</div>' +
-            '<div id="business" class="col-sm-1 text-center"><img class="size-img" src="' + business + '"/></div>' +
+            '<div id="business" class="col-sm-1 text-center"><img class="size-img" src="' + businessImg + '"/></div>' +
             '<div id="blank" class="col-sm-1"></div>' +
             '<div id="moreInfo" class="col-sm-1"><i class="fa fa-info" style="font-size:24px"></i></div>' +
             '</div>' +
@@ -69,7 +78,22 @@ function impresion(id, img, tool, path, type, business, body, body2, link, isVal
             '</div>' +
             '</div>'
         );
+        $(".dvDataTR").append(
+            '<tr>'+
+                '<td>'+tool+'</td>'+
+                '<td>'+path+'</td>'+
+                '<td>'+type+'</td>'+
+                '<td>'+business+'</td>'+
+                '<td>'+businessurl+'</td>'+
+                '<td>'+description+' '+messagesCatalog+'</td>'+
+            '</tr>'
+        );
     }
+
+    $('[data-toggle="tooltip"]').tooltip({
+         html: true,
+         title: '<i class="'+iconValid+'" style="font-size:30px;color:'+iconColor+';"></i>\n<a style="font-size:14px; font-weight: bold;">'+description+'</a style="text-align=left;">\n'+messagesCatalog+'</a>'
+    });
 }
 
 function llamadas(details) {
@@ -115,7 +139,8 @@ function llamadas(details) {
                 .always(function(data) {
                     path = formData.path;
                     type = formData.type;
-                    business = formData.application.business;
+//                    business = formData.application.business;
+                    business = formData.platform.http.http_url;
                     tool = "MELIDATA";
                     img = "img/md.png";
                     id = formData.id;
@@ -123,8 +148,8 @@ function llamadas(details) {
                     if (data.status == 400) {
                         isValid = 'notValid';
                         for (var i = 0; i < data.responseJSON.messages.length; i++) {
-                            messagesCatalog += '\n';
-                            messagesCatalog += '- ' + data.responseJSON.messages[i]
+                            messagesCatalog += '- ' + data.responseJSON.messages[i];
+                            messagesCatalog += '\n'
                         }
                     } else {
                         isValid = 'valid'
@@ -292,3 +317,139 @@ function mediaQuery() {
 document.addEventListener('DOMContentLoaded', function() {
     consulta.addListener(mediaQuery);
 });
+
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+ 
+    function exportTableToCSV($table, filename) {
+      var $rows = $table.find('tr:has(td)'),
+
+      // Temporary delimiter characters unlikely to be typed by keyboard
+      // This is to avoid accidentally splitting the actual contents
+      tmpColDelim = String.fromCharCode(11), // vertical tab character
+      tmpRowDelim = String.fromCharCode(0), // null character
+
+      // actual delimiter characters for CSV format
+      colDelim = '","',
+      rowDelim = '"\r\n"',
+
+      // Grab text from table into CSV formatted string
+      csv = '"' + $rows.map(function(i, row) {
+        var $row = $(row),
+          $cols = $row.find('td');
+
+        return $cols.map(function(j, col) {
+          var $col = $(col),
+            text = $col.text();
+
+          return text.replace(/"/g, '""'); // escape double quotes
+
+        }).get().join(tmpColDelim);
+
+      }).get().join(tmpRowDelim)
+      .split(tmpRowDelim).join(rowDelim)
+      .split(tmpColDelim).join(colDelim) + '"';
+
+    // Deliberate 'false', see comment below
+    if (false && window.navigator.msSaveBlob) {
+
+      var blob = new Blob([decodeURIComponent(csv)], {
+        type: 'text/csv;charset=utf8'
+      });
+
+      // Crashes in IE 10, IE 11 and Microsoft Edge
+      // See MS Edge Issue #10396033
+      // Hence, the deliberate 'false'
+      // This is here just for completeness
+      // Remove the 'false' at your own risk
+      window.navigator.msSaveBlob(blob, filename);
+
+    } else if (window.Blob && window.URL) {
+      // HTML5 Blob        
+      var blob = new Blob([csv], {
+        type: 'text/csv;charset=utf-8'
+      });
+      var csvUrl = URL.createObjectURL(blob);
+
+      $(this)
+        .attr({
+          'download': filename,
+          'href': csvUrl
+        });
+    } else {
+      // Data URI
+      var csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+      $(this)
+        .attr({
+          'download': filename,
+          'href': csvData,
+          'target': '_blank'
+        });
+    }
+  }
+
+  // This must be a hyperlink
+  $(".export").on('click', function(event) {
+    // CSV
+    var args = [$('#dvData>table'), 'TrackInspector-Export.csv'];
+
+    exportTableToCSV.apply(this, args);
+
+    // If CSV, don't do event.preventDefault() or return false
+    // We actually need this to be a typical hyperlink
+  });    
+  
+   
+});
+
+
+
+
+
+function downloadCSV(csv, filename) {
+    var csvFile;
+    var downloadLink;
+
+    // CSV file
+    csvFile = new Blob([csv], {type: "text/csv"});
+
+    // Download link
+    downloadLink = document.createElement("a");
+
+    // File name
+    downloadLink.download = filename;
+
+    // Create a link to the file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+
+    // Hide download link
+    downloadLink.style.display = "none";
+
+    // Add the link to DOM
+    document.body.appendChild(downloadLink);
+
+    // Click download link
+    downloadLink.click();
+}
+
+function exportTableToCSV(filename) {
+    var csv = [];
+    var rows = document.querySelectorAll("table tr");
+    
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll("td, th");
+        
+        for (var j = 0; j < cols.length; j++) 
+            row.push(cols[j].innerText);
+
+        csv.push(row.join(","));        
+    }
+
+    // Download CSV file
+    downloadCSV(csv.join("n"), filename);
+}
+
+
+

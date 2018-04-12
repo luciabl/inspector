@@ -12,11 +12,19 @@
     <style id="settings"></style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/jjsonviewer.css">
+
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/jjsonviewer.js"></script>
+
+    <script type="text/javascript" src="js/popper.min.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="main.js"></script>
+    <script src="js/jsapi.js"></script>
 </head>
 
 <body>
-    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="js/jjsonviewer.js"></script>
+    
     <header>
         <nav>
             <a class="navbar-brand" href="#">Inspector</a>
@@ -37,19 +45,33 @@
                 <div id="moreInfo" class="col-sm-1"></div>
             </div>
         </div>
+    <div id="dvData">
+        <table class="dvDataTR hidden">
+            <tr>
+                <td>Tool</td>
+                <td>Path</td>
+                <td>Type</td>
+                <td>Business</td>
+                <td>Url</td>
+                <td>Validity</td>
+            </tr>
+        </table>
+    </div>
         <div id="accordion" class="accordion">
         </div>
     </section>
     <div class="derecha">
+        <a href="#" class="export">
+            <i class='fa fa-download fa-2x'></i>
+        </a>
+        &nbsp;
         <a href="index.html" title="">
-        <i class='fa fa-trash fa-2x'></i>
+            <i class='fa fa-trash fa-2x'></i>
         </a>
     </div>
     <div class="derecha">
         <p class="navbar-grey2" align="right">Dudas, consultas o sugerencias: ba-analytics@mercadolibre.com</p>
     </div>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="main.js"></script>
 </body>
 
 </html>

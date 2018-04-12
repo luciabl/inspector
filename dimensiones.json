@@ -1264,11 +1264,17 @@
         "description":"Se usa para identificar si le mostraron al usuario la posibilidad de pagar con dinero en cuenta.Se envia en pagina:payments de CHO",
         "type": "Hit"
       },
-        {
+      {
         "id": 105,
         "name": "ScreenDensity",
         "description":"Se está usando en el CHO para enviar los DPI del user",
         "type": "Sesion"
+      },
+      {
+        "id": 106,
+        "name": "ShippingPickUpInStore",
+        "description":"Se usa para describir cuando un ítem tiene disponible el envío Pick up in store. Valores a enviar: True, False",
+        "type": "Hit"
       }
     ],
 "dimensions_mp": [
