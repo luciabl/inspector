@@ -421,11 +421,6 @@ label {
 }
 
 @media screen and (max-width: 767px) {
-
-body{
-    border: 10px solid red;
-}
-
     .navbar-brand {
         font-size: 1rem;
     }

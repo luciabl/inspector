@@ -79,20 +79,20 @@ function impresion(id, img, tool, path, type, businessurl, body, body2, link, is
             '</div>'
         );
         $(".dvDataTR").append(
-            '<tr>'+
-                '<td>'+tool+'</td>'+
-                '<td>'+path+'</td>'+
-                '<td>'+type+'</td>'+
-                '<td>'+business+'</td>'+
-                '<td>'+businessurl+'</td>'+
-                '<td>'+description+' '+messagesCatalog+'</td>'+
+            '<tr>' +
+            '<td>' + tool + '</td>' +
+            '<td>' + path + '</td>' +
+            '<td>' + type + '</td>' +
+            '<td>' + business + '</td>' +
+            '<td>' + businessurl + '</td>' +
+            '<td>' + description + ' ' + messagesCatalog + '</td>' +
             '</tr>'
         );
     }
 
     $('[data-toggle="tooltip"]').tooltip({
-         html: true,
-         title: '<i class="'+iconValid+'" style="font-size:30px;color:'+iconColor+';"></i>\n<a style="font-size:14px; font-weight: bold;">'+description+'</a style="text-align=left;">\n'+messagesCatalog+'</a>'
+        html: true,
+        title: '<i class="' + iconValid + '" style="font-size:30px;color:' + iconColor + ';"></i>\n<a style="font-size:14px; font-weight: bold;">' + description + '</a style="text-align=left;">\n' + messagesCatalog + '</a>'
     });
 }
 
@@ -139,7 +139,7 @@ function llamadas(details) {
                 .always(function(data) {
                     path = formData.path;
                     type = formData.type;
-//                    business = formData.application.business;
+                    //                    business = formData.application.business;
                     business = formData.platform.http.http_url;
                     tool = "MELIDATA";
                     img = "img/md.png";
@@ -199,12 +199,17 @@ function llamadas(details) {
                     }
                 }
             }
-            link = '<a href="https://analytics.google.com/analytics/web/#report/content-pages/a' + a + 'w' + w + 'p' + p + '/%3Fexplorer-table.plotKeys%3D%5B%5D%26_r.drilldown%3Danalytics.pagePath%3A' + encodeURIComponent(path) + '/"  target="_blank">link</a>';
+            link = '<a href="https://analytics.google.com/analytics/web/#report/content-pages/a' + a + 'w' + w + 'p' + p + '/%3Fexplorer-table.plotKeys%3D%5B%5D%26_r.drilldown%3Danalytics.pagePath%3A' + encodeURIComponent(path) + '/"  target="_blank">Link</a>';
 
             body += "<tr>" +
                 "<td><i class='fa fa-angle-right fa-2x'></i></td>" +
                 "<td> Path </td>" +
                 "<td>" + path + "</td>" +
+                "</tr>" +
+                "<tr>" +
+                "<td><i class='fa fa-globe fa-2x'></i></td>" +
+                "<td> Url </td>" +
+                "<td><a href='" + business + "'>Link</a></td>" +
                 "</tr>" +
                 "<tr>" +
                 "<td><img class='fa-2x' src=" + flag + " height= '25px'/></td>" +
@@ -247,8 +252,6 @@ function llamadas(details) {
                     "</tr>";
             }
 
-
-
             body2 += "<h6>Custom Dimensions</h6>" +
                 "<table class='table'>" +
                 "<th>ID</th><th>Name</th><th>Value</th>";
@@ -268,7 +271,6 @@ function llamadas(details) {
                 if (a.id < b.id) {
                     return -1;
                 }
-                // a must be equal to b
                 return 0;
             });
 
@@ -290,15 +292,9 @@ function llamadas(details) {
                     "<td>" + dimensions_id[i].value + "</td>" +
                     "</tr>";
             }
-
-
             impresion(id, img, tool, path, type, business, body, body2, link, isValid, messagesCatalog);
         });
     }
-
-    //api dimensions:
-    //https://developers.google.com/analytics/devguides/config/mgmt/v3/mgmtReference/management/customDimensions/get
-    //https://www.googleapis.com/analytics/v3/management/accounts/46085787/webproperties/UA-46085787-1/customDimensions/ga:dimension2
 }
 
 chrome.webRequest.onBeforeRequest.addListener(llamadas, { urls: ["https://*.mercadolibre.com/*", "https://*.google-analytics.com/*"] }, ['blocking', 'requestBody']);
@@ -319,137 +315,59 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
- 
+$(document).ready(function() {
+
+    /* EXPORT TO CSV */
     function exportTableToCSV($table, filename) {
-      var $rows = $table.find('tr:has(td)'),
+        var $rows = $table.find('tr:has(td)'),
+            tmpColDelim = String.fromCharCode(11), // vertical tab character
+            tmpRowDelim = String.fromCharCode(0), // null character
+            colDelim = '","',
+            rowDelim = '"\r\n"',
+            csv = '"' + $rows.map(function(i, row) {
+                var $row = $(row),
+                    $cols = $row.find('td');
+                return $cols.map(function(j, col) {
+                    var $col = $(col),
+                        text = $col.text();
+                    return text.replace(/"/g, '""'); // escape double quotes
+                }).get().join(tmpColDelim);
+            }).get().join(tmpRowDelim)
+            .split(tmpRowDelim).join(rowDelim)
+            .split(tmpColDelim).join(colDelim) + '"';
+        if (false && window.navigator.msSaveBlob) {
+            var blob = new Blob([decodeURIComponent(csv)], {
+                type: 'text/csv;charset=utf8'
+            });
+            window.navigator.msSaveBlob(blob, filename);
+        } else if (window.Blob && window.URL) {
+            var blob = new Blob([csv], {
+                type: 'text/csv;charset=utf-8'
+            });
+            var csvUrl = URL.createObjectURL(blob);
 
-      // Temporary delimiter characters unlikely to be typed by keyboard
-      // This is to avoid accidentally splitting the actual contents
-      tmpColDelim = String.fromCharCode(11), // vertical tab character
-      tmpRowDelim = String.fromCharCode(0), // null character
+            $(this)
+                .attr({
+                    'download': filename,
+                    'href': csvUrl
+                });
+        } else {
+            var csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
 
-      // actual delimiter characters for CSV format
-      colDelim = '","',
-      rowDelim = '"\r\n"',
-
-      // Grab text from table into CSV formatted string
-      csv = '"' + $rows.map(function(i, row) {
-        var $row = $(row),
-          $cols = $row.find('td');
-
-        return $cols.map(function(j, col) {
-          var $col = $(col),
-            text = $col.text();
-
-          return text.replace(/"/g, '""'); // escape double quotes
-
-        }).get().join(tmpColDelim);
-
-      }).get().join(tmpRowDelim)
-      .split(tmpRowDelim).join(rowDelim)
-      .split(tmpColDelim).join(colDelim) + '"';
-
-    // Deliberate 'false', see comment below
-    if (false && window.navigator.msSaveBlob) {
-
-      var blob = new Blob([decodeURIComponent(csv)], {
-        type: 'text/csv;charset=utf8'
-      });
-
-      // Crashes in IE 10, IE 11 and Microsoft Edge
-      // See MS Edge Issue #10396033
-      // Hence, the deliberate 'false'
-      // This is here just for completeness
-      // Remove the 'false' at your own risk
-      window.navigator.msSaveBlob(blob, filename);
-
-    } else if (window.Blob && window.URL) {
-      // HTML5 Blob        
-      var blob = new Blob([csv], {
-        type: 'text/csv;charset=utf-8'
-      });
-      var csvUrl = URL.createObjectURL(blob);
-
-      $(this)
-        .attr({
-          'download': filename,
-          'href': csvUrl
-        });
-    } else {
-      // Data URI
-      var csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
-
-      $(this)
-        .attr({
-          'download': filename,
-          'href': csvData,
-          'target': '_blank'
-        });
+            $(this)
+                .attr({
+                    'download': filename,
+                    'href': csvData,
+                    'target': '_blank'
+                });
+        }
     }
-  }
 
-  // This must be a hyperlink
-  $(".export").on('click', function(event) {
-    // CSV
-    var args = [$('#dvData>table'), 'TrackInspector-Export.csv'];
+    $(".export").on('click', function(event) {
+        var args = [$('#dvData>table'), 'TrackInspector-Export.csv'];
+        exportTableToCSV.apply(this, args);
+    });
 
-    exportTableToCSV.apply(this, args);
+    /* END EXPORT TO CSV */
 
-    // If CSV, don't do event.preventDefault() or return false
-    // We actually need this to be a typical hyperlink
-  });    
-  
-   
 });
-
-
-
-
-
-function downloadCSV(csv, filename) {
-    var csvFile;
-    var downloadLink;
-
-    // CSV file
-    csvFile = new Blob([csv], {type: "text/csv"});
-
-    // Download link
-    downloadLink = document.createElement("a");
-
-    // File name
-    downloadLink.download = filename;
-
-    // Create a link to the file
-    downloadLink.href = window.URL.createObjectURL(csvFile);
-
-    // Hide download link
-    downloadLink.style.display = "none";
-
-    // Add the link to DOM
-    document.body.appendChild(downloadLink);
-
-    // Click download link
-    downloadLink.click();
-}
-
-function exportTableToCSV(filename) {
-    var csv = [];
-    var rows = document.querySelectorAll("table tr");
-    
-    for (var i = 0; i < rows.length; i++) {
-        var row = [], cols = rows[i].querySelectorAll("td, th");
-        
-        for (var j = 0; j < cols.length; j++) 
-            row.push(cols[j].innerText);
-
-        csv.push(row.join(","));        
-    }
-
-    // Download CSV file
-    downloadCSV(csv.join("n"), filename);
-}
-
-
-
