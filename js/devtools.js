@@ -1,1 +1,1 @@
-chrome.devtools.panels.create("Inspector", "img/128.png", "index.html");
+chrome.devtools.panels.create("Track Inspector", "img/128.png", "index.html");

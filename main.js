@@ -65,7 +65,7 @@ function impresion(id, img, tool, path, type, businessurl, body, body2, link, is
             '<div id="type" class="col-sm-2 text-center">' + type + '</div>' +
             '<div id="business" class="col-sm-1 text-center"><img class="size-img" src="' + businessImg + '"/></div>' +
             '<div id="blank" class="col-sm-1"></div>' +
-            '<div id="moreInfo" class="col-sm-1"><i class="fa fa-info" style="font-size:24px"></i></div>' +
+            '<div id="moreInfo" class="col-sm-1"><i class="fa fa-sort" style="font-size:24px"></i></div>' +
             '</div>' +
             '</a>' +
             '</div>' +
@@ -116,6 +116,9 @@ function llamadas(details) {
     var isValid = false;
     var formData = {};
     var messagesCatalog = '';
+    var utm_campaign = '';
+    var utm_medium = '';
+    var utm_source = '';
 
     if (details.method == "POST" && details.url == 'https://data.mercadolibre.com/tracks') {
         for (i = 0; i < details.requestBody.raw.length; i++) {
@@ -177,11 +180,21 @@ function llamadas(details) {
             path += ' - ' + url.searchParams.get("ea")
         }
         business = url.searchParams.get("dl")
+
+        var utm_url = decodeURIComponent(dec.decode(details.requestBody.raw[0].bytes)).replace("?","&").split("&");
+        for (var i = 0; i < utm_url.length; i++) {
+            if (utm_url[i].match(/utm_campaign/)){
+                utm_campaign = utm_url[i].split('=')[1];
+            }else if (utm_url[i].match(/utm_source/)){
+                utm_source = utm_url[i].split('=')[1];
+            }else if (utm_url[i].match(/utm_medium/)){
+                utm_medium = utm_url[i].split('=')[1];
+            }
+        }
         tool = "GOOGLE ANALYTICS";
         img = "img/ga.png";
         body = "";
         id = url.searchParams.get("z");
-        //var sURLVariables = decodeURIComponent(dec.decode(details.requestBody.raw[0].bytes)).split('&');
 
         $.getJSON(chrome.extension.getURL('dimensiones.json'), function(dimensions) {
 
@@ -209,7 +222,7 @@ function llamadas(details) {
                 "<tr>" +
                 "<td><i class='fa fa-globe fa-2x'></i></td>" +
                 "<td> Url </td>" +
-                "<td><a href='" + business + "'>Link</a></td>" +
+                "<td><a href='" + business + "' target='_blank'>Link</a></td>" +
                 "</tr>" +
                 "<tr>" +
                 "<td><img class='fa-2x' src=" + flag + " height= '25px'/></td>" +
@@ -226,7 +239,6 @@ function llamadas(details) {
                 "<td> User Id </td>" +
                 "<td>" + url.searchParams.get("uid") + "</td>" +
                 "</tr>";
-
 
             if ((type == 'event') || (type == 'EVENT')) {
                 body += "<tr>" +
@@ -250,6 +262,31 @@ function llamadas(details) {
                     "<td> View in GA </td>" +
                     "<td>" + link + "</td>" +
                     "</tr>";
+            }
+
+            if (utm_source != ''){
+                body += "<tr>" +
+                "<td><i class='fa fa-bullhorn fa-2x'></i></td>" +
+                "<td> UTM source </td>" +
+                "<td>" + utm_source + "</td>" +
+                "</tr>" +
+                "<tr>"
+            }
+            if(utm_medium != ''){
+                body += "<tr>" +
+                "<td><i class='fa fa-bullhorn fa-2x'></i></td>" +
+                "<td> UTM medium </td>" +
+                "<td>" + utm_medium + "</td>" +
+                "</tr>" +
+                "<tr>"
+            }
+            if (utm_campaign != ''){
+                body += "<tr>" +
+                "<td><i class='fa fa-bullhorn fa-2x'></i></td>" +
+                "<td> UTM campaign </td>" +
+                "<td>" + utm_campaign + "</td>" +
+                "</tr>" +
+                "<tr>"
             }
 
             body2 += "<h6>Custom Dimensions</h6>" +
