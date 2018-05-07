@@ -1275,6 +1275,18 @@
         "name": "ShippingPickUpInStore",
         "description":"Se usa para describir cuando un ítem tiene disponible el envío Pick up in store. Valores a enviar: True, False",
         "type": "Hit"
+      },
+      {
+        "id": 107,
+        "name": "AvailableBuyTogether",
+        "description":"Se usa para decir si un item de una vip esta mostrando combo de recomendaciones o no. Valores a enviar: True, False",
+        "type": "Hit"
+      },
+      {
+        "id": 108,
+        "name": "ProductsQuantity",
+        "description":"Se usa para enviar la cantidad de items que se comrpan en una compra. Valores a enviar: 1, 2, ..., n",
+        "type": "Hit"
       }
     ],
 "dimensions_mp": [
@@ -1661,6 +1673,56 @@
       {
         "id": 6,
         "name": "isLogged",
+        "description":"",
+        "type": "Hit"
+      }
+    ],
+"dimensions_appstore": [
+      {
+        "id": 1,
+        "name": "DeviceLayout",
+        "description":"",
+        "type": "Hit"
+      },
+      {
+        "id": 2,
+        "name": "Logged",
+        "description":"",
+        "type": "Hit"
+      },
+      {
+        "id": 3,
+        "name": "Actions",
+        "description":"",
+        "type": "Hit"
+      },
+      {
+        "id": 4,
+        "name": "PaymentMethod",
+        "description":"",
+        "type": "Sesion"
+      },
+      {
+        "id": 5,
+        "name": "Category",
+        "description":"",
+        "type": "Sesion"
+      },
+      {
+        "id": 6,
+        "name": "App",
+        "description":"",
+        "type": "Hit"
+      },
+      {
+        "id": 7,
+        "name": "UserId",
+        "description":"",
+        "type": "Hit"
+      },
+      {
+        "id": 8,
+        "name": "NickName",
         "description":"",
         "type": "Hit"
       }

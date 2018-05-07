@@ -12,18 +12,15 @@
     <style id="settings"></style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/jjsonviewer.css">
-
     <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/jjsonviewer.js"></script>
-
     <script type="text/javascript" src="js/popper.min.js"></script>
-
+    <script type="text/javascript" src="js/bootstrap-hover-dropdown.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="main.js"></script>
 </head>
 
 <body>
-    
     <header>
         <nav>
             <a class="navbar-brand" href="#">Track Inspector</a>
@@ -36,10 +33,40 @@
             <div class="row">
                 <div id="imgTool" class="col-sm-1 text-center"></div>
                 <div id="idValid" class="col-sm-1 text-center"> </div>
-                <div id="tool" class="col-sm-2 text-center"> Tool </div>
+                <div id="tool" class="col-sm-2 text-center"> 
+                    <div class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        Tool
+                      </a>
+                      <div id="filter1" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#"><input type="checkbox" name="filter1" value="ga"> Google Analytics</a>
+                        <a class="dropdown-item" href="#"><input type="checkbox" name="filter1" value="md"> Melidata</a>
+                      </div>
+                    </div>
+                </div>
+                <div id="type" class="col-sm-2 text-center"> 
+                    <div class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        Type
+                      </a>
+                      <div id="filter2" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#"><input type="checkbox" name="filter2" value="pageview"> Pageview</a>
+                        <a class="dropdown-item" href="#"><input type="checkbox" name="filter2" value="event"> Event</a>
+                      </div>
+                    </div>
+                </div>
                 <div id="path" class="col-sm-3 text-center"> Path </div>
-                <div id="type" class="col-sm-2 text-center"> Type </div>
-                <div id="business" class="col-sm-1 text-center"> Business </div>
+                <div id="business" class="col-sm-1 text-center">
+                    <div class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        Business
+                      </a>
+                      <div id="filter3" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#"><input type="checkbox" name="filter3" value="ml"> Mercado libre</a>
+                        <a class="dropdown-item" href="#"><input type="checkbox" name="filter3" value="mp"> Mercado pago</a>
+                      </div>
+                    </div>
+                </div>
                 <div id="blank" class="col-sm-1"></div>
                 <div id="moreInfo" class="col-sm-1"></div>
             </div>
@@ -56,21 +83,29 @@
             </tr>
         </table>
     </div>
-        <div id="accordion" class="accordion">
+        <div id="accordion" class="accordion filtros">
         </div>
     </section>
     <div class="derecha">
-        <a href="#" class="export" title="Export to CSV">
+        <div class="NoResults"></div>
+
+        <a href="#" class="showall" data-toggle='tooltip_gral' data-placement='bottom' title="Delete Filters">
+            <i class='fa fa-filter fa-2x'></i>
+        </a>
+        &nbsp;
+        <a href="#" class="export" data-toggle='tooltip_gral' data-placement='bottom' title="Export to CSV">
             <i class='fa fa-download fa-2x'></i>
         </a>
         &nbsp;
-        <a href="index.html" title="Delete tracks">
+        <a href="index.html" data-toggle='tooltip_gral' data-placement='bottom' title="Delete tracks">
             <i class='fa fa-trash fa-2x'></i>
         </a>
     </div>
     <div class="derecha">
         <p class="navbar-grey2" align="right">Dudas, consultas o sugerencias: ba-analytics@mercadolibre.com</p>
     </div>
+    <br/><br/>
+
 </body>
 
 </html>
