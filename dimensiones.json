@@ -1287,6 +1287,12 @@
         "name": "ProductsQuantity",
         "description":"Se usa para enviar la cantidad de items que se comrpan en una compra. Valores a enviar: 1, 2, ..., n",
         "type": "Hit"
+      },
+      {
+        "id": 109,
+        "name": "AdoptionProbabilityCredits",
+        "description":"Probabilidad de que el usuario compre con Mercado Crédito",
+        "type": "Hit"
       }
     ],
 "dimensions_mp": [

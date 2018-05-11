@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Track Inspector</title>
+    <script src="js/options.js"></script>
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
     <style id="settings"></style>
@@ -35,6 +36,7 @@
                 <div id="idValid" class="col-sm-1 text-center"> </div>
                 <div id="tool" class="col-sm-2 text-center"> 
                     <div class="dropdown">
+                      <filter class="filter1"><i class="fa fa-filter fa-1x" style="display:none;color:grey;"></i></filter>&nbsp;
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
                         Tool
                       </a>
@@ -46,6 +48,7 @@
                 </div>
                 <div id="type" class="col-sm-2 text-center"> 
                     <div class="dropdown">
+                      <filter class="filter2"><i class="fa fa-filter fa-1x" style="display:none;color:grey;"></i></filter>&nbsp;
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
                         Type
                       </a>
@@ -56,8 +59,9 @@
                     </div>
                 </div>
                 <div id="path" class="col-sm-3 text-center"> Path </div>
-                <div id="business" class="col-sm-1 text-center">
+                <div id="business" class="col-sm-2 text-center">
                     <div class="dropdown">
+                      <filter class="filter3"><i class="fa fa-filter fa-1x" style="display:none;color:grey;"></i></filter>&nbsp;
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
                         Business
                       </a>
@@ -67,7 +71,6 @@
                       </div>
                     </div>
                 </div>
-                <div id="blank" class="col-sm-1"></div>
                 <div id="moreInfo" class="col-sm-1"></div>
             </div>
         </div>
@@ -97,15 +100,14 @@
             <i class='fa fa-download fa-2x'></i>
         </a>
         &nbsp;
-        <a href="index.html" data-toggle='tooltip_gral' data-placement='bottom' title="Delete tracks">
+        <a href="index.html" class="delete" data-toggle='tooltip_gral' data-placement='bottom' title="Delete tracks">
             <i class='fa fa-trash fa-2x'></i>
         </a>
     </div>
     <div class="derecha">
         <p class="navbar-grey2" align="right">Dudas, consultas o sugerencias: ba-analytics@mercadolibre.com</p>
     </div>
-    <br/><br/>
-
+    <br/>
 </body>
 
 </html>

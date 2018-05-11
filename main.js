@@ -69,8 +69,7 @@ function impresion(id, img, tool, path, type, businessurl, body, body2, link, is
             '<div id="tool" class="col-sm-2 text-center">' + tool + '</div>' +
             '<div id="type" class="col-sm-2 text-center">' + type + '</div>' +
             '<div id="path" class="path col-sm-3 text-center">' + path + '</textarea></div>' +
-            '<div id="business" class="col-sm-1 text-center"><img class="size-img" src="' + businessImg + '"/></div>' +
-            '<div id="blank" class="col-sm-1"></div>' +
+            '<div id="business" class="col-sm-2 text-center"><img class="size-img" src="' + businessImg + '"/></div>' +
             '<div id="moreInfo" class="col-sm-1"><i class="fa fa-sort" style="font-size:24px"></i></div>' +
             '</div>' +
             '</a>' +
@@ -246,26 +245,6 @@ function llamadas(details) {
                 "<td>" + url.searchParams.get("uid") + "</td>" +
                 "</tr>";
 
-            $(document).ready(function() {    
-	            $(".copy").on("click",function(){
-	            	var id_element = $(this).attr("id");
-	            	path_id = "path_" + id_element.substr(5,id_element.length);
-	            	copiarAlPortapapeles(path_id);
-				});
-
-                $(".copy").click(function(){
-                    $("path").attr("data-toggle","tooltip");
-                    $("path").attr("title","Copied!");
-                    $("path").tooltip('show');
-                    setTimeout(function () {
-                            $("path").tooltip('hide');
-                            $("path").removeAttr("data-original-title");
-                            $("path").removeAttr("title");
-                            $("path").removeAttr("data-toggle");
-                    }, 800);
-                });                
-			})
-
             if ((type == 'event') || (type == 'EVENT')) {
                 body += "<tr>" +
                     "<td><i class='fa fa-folder-open fa-2x'></i></td>" +
@@ -358,7 +337,33 @@ function llamadas(details) {
                     "<td>" + dimensions_id[i].value + "</td>" +
                     "</tr>";
             }
+
             impresion(id, img, tool, path, type, business, body, body2, link, isValid, messagesCatalog);
+
+            $(document).ready(function() {    
+                $(".copy").on("click",function(){
+                    var id_element = $(this).attr("id");
+                    path_id = "path_" + id_element.substr(5,id_element.length);
+                    copiarAlPortapapeles(path_id);
+                    $("#"+path_id).attr("data-toggle","tooltip");
+                    $("#"+path_id).attr("title","Copied!");
+                    $("#"+path_id).tooltip('show');
+                    setTimeout(function () {
+                            $("path").tooltip('dispose');
+                    }, 800);
+                });
+/*
+                $.ajax({
+                    url: "http://localhost:8080/inspector/script.php",
+                    type: "post",
+                    data: { path: path, type: type },
+                    dataType: 'json'
+                }).always(function(data) {
+                     console.log(data);
+                });
+*/
+            })
+
         });
     }
 }
@@ -457,17 +462,17 @@ $(document).ready(function() {
 
             $("#filter1 :checkbox:checked").each(function () {
                 Filter1Array[filter1_Count] = $(this).val();
-                filter1_Count++
+                filter1_Count++;
             });
 
             $("#filter2 :checkbox:checked").each(function () {
                 Filter2Array[filter2_Count] = $(this).val();
-                filter2_Count++
+                filter2_Count++;
             });
 
             $("#filter3 :checkbox:checked").each(function () {
                 Filter3Array[filter3_Count] = $(this).val();
-                filter3_Count++
+                filter3_Count++;
             });
 
             var filter1string
@@ -478,9 +483,9 @@ $(document).ready(function() {
             var filter2checked = false
             var filter3checked = false
 
-            if (filter1_Count == 0) { filter1_Count = 1; } else { filter1checked = true; }
-            if (filter2_Count == 0) { filter2_Count = 1; } else { filter2checked = true; }
-            if (filter3_Count == 0) { filter3_Count = 1; } else { filter3checked = true; }
+            if (filter1_Count == 0) { filter1_Count = 1; $(".filter1 i").hide();} else { filter1checked = true; $(".filter1 i").show();}
+            if (filter2_Count == 0) { filter2_Count = 1; $(".filter2 i").hide();} else { filter2checked = true; $(".filter2 i").show();}
+            if (filter3_Count == 0) { filter3_Count = 1; $(".filter3 i").hide();} else { filter3checked = true; $(".filter3 i").show();}
 
             for (f1 = 0; f1 < filter1_Count; f1++) {
 
@@ -516,9 +521,22 @@ $(document).ready(function() {
             $("#filter1 :checkbox").prop("checked", false);
             $("#filter2 :checkbox").prop("checked", false);
             $("#filter3 :checkbox").prop("checked", false);
+            $(".filter1 i").hide();
+            $(".filter2 i").hide();
+            $(".filter3 i").hide();
             $(".NoResults").html("");
+            ga('send', 'event', 'LIST', 'DELETE_FILTERS');
             return false;
         });
-    //END FILTROS
 
+        $('a.export').click(function () {
+        	ga('send', 'event', 'LIST', 'EXPORT', 'CSV');
+        });
+
+        $('a.delete').click(function () {
+        	ga('send', 'event', 'LIST', 'DELETE_TRACKS');
+        });
+
+
+    //END FILTROS
 });

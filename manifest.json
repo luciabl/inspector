@@ -1,9 +1,10 @@
 {
     "name": "Track Inspector",
-    "version": "0.1.2",
+    "version": "0.1.5",
     "description": "View tracks of Google Analytics and Melidata by Mercado Libre",
     "short_name": "Inspector",
     "author": "BA-Analytics",
+    "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'",
     "homepage_url": "https://www.mercadolibre.com.ar",
     "devtools_page": "devtools.html",
     "background":
@@ -25,6 +26,8 @@
         "default_title": "Start Inspector"
     },
     "permissions": [
+        "http://localhost:8080/*",
+        "http://localhost/*",
         "tabs",
         "contextMenus",
         "storage",
