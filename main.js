@@ -534,6 +534,7 @@ $(document).ready(function() {
         });
 
         $('a.delete').click(function () {
+            $(".accordion").empty();
         	ga('send', 'event', 'LIST', 'DELETE_TRACKS');
         });
 
