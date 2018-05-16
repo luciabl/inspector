@@ -2,6 +2,8 @@
     INSPECTOR v0.1.7
  */
 
+var currentTabId = -1;
+
 function impresion(id, img, tool, path, type, businessurl, body, body2, link, isValid, messagesCatalog) {
     var iconValid = '';
     var iconColor = '';
@@ -368,7 +370,16 @@ function llamadas(details) {
     }
 }
 
-chrome.webRequest.onBeforeRequest.addListener(llamadas, { urls: ["http://*.mercadolibre.com/*","https://*.mercadolibre.com/*", "https://*.google-analytics.com/*"] }, ['blocking', 'requestBody']);
+
+
+chrome.tabs.getSelected(null, function(tab){ 
+    currentTabId = tab.id;
+    console.log("tab id in getselected "+currentTabId);
+    chrome.webRequest.onBeforeRequest.addListener(llamadas, { urls: ["http://*.mercadolibre.com/*","https://*.mercadolibre.com/*", "https://*.google-analytics.com/*"], tabId: currentTabId }, ['blocking', 'requestBody']);
+});
+
+
+
 
 var consulta = window.matchMedia('(max-width: 767px)');
 

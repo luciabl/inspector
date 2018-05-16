@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Track Inspector</title>
+    <script src="js/options.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <style id="settings"></style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/jjsonviewer.css">
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/jjsonviewer.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-hover-dropdown.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="main-devtool.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a class="navbar-brand" href="#">Track Inspector</a>
+            <a class="navbar-grey" href="#">Visualización de tracks de Google Analytics y Melidata</a>
+            <img src="img/128.png" height="40" class="align-top" alt="">
+        </nav>
+    </header>
+    <section class="contenido wrapper" style="overflow-y: scroll;">
+        <div class="alert alert-dark" role="alert">
+            <div class="row">
+                <div id="imgTool" class="col-sm-1 text-center"></div>
+                <div id="idValid" class="col-sm-1 text-center"> </div>
+                <div id="tool" class="col-sm-2 text-center"> 
+                    <div class="dropdown">
+                      <filter class="filter1"><i class="fa fa-filter fa-1x" style="display:none;color:grey;"></i></filter>&nbsp;
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        Tool
+                      </a>
+                      <div id="filter1" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#"><input type="checkbox" name="filter1" value="ga"> Google Analytics</a>
+                        <a class="dropdown-item" href="#"><input type="checkbox" name="filter1" value="md"> Melidata</a>
+                      </div>
+                    </div>
+                </div>
+                <div id="type" class="col-sm-2 text-center"> 
+                    <div class="dropdown">
+                      <filter class="filter2"><i class="fa fa-filter fa-1x" style="display:none;color:grey;"></i></filter>&nbsp;
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        Type
+                      </a>
+                      <div id="filter2" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#"><input type="checkbox" name="filter2" value="pageview"> Pageview</a>
+                        <a class="dropdown-item" href="#"><input type="checkbox" name="filter2" value="event"> Event</a>
+                      </div>
+                    </div>
+                </div>
+                <div id="path" class="col-sm-3 text-center"> Path </div>
+                <div id="business" class="col-sm-2 text-center">
+                    <div class="dropdown">
+                      <filter class="filter3"><i class="fa fa-filter fa-1x" style="display:none;color:grey;"></i></filter>&nbsp;
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                        Business
+                      </a>
+                      <div id="filter3" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#"><input type="checkbox" name="filter3" value="ml"> Mercado libre</a>
+                        <a class="dropdown-item" href="#"><input type="checkbox" name="filter3" value="mp"> Mercado pago</a>
+                      </div>
+                    </div>
+                </div>
+                <div id="moreInfo" class="col-sm-1"></div>
+            </div>
+        </div>
+    <div id="dvData">
+        <table class="dvDataTR hidden">
+            <tr>
+                <td>Tool</td>
+                <td>Path</td>
+                <td>Type</td>
+                <td>Business</td>
+                <td>Url</td>
+                <td>Validity</td>
+            </tr>
+        </table>
+    </div>
+        <div id="accordion" class="accordion filtros">
+        </div>
+    </section>
+    <div class="derecha">
+        <div class="NoResults"></div>
+
+        <a href="#" class="showall" data-toggle='tooltip_gral' data-placement='bottom' title="Delete Filters">
+            <i class='fa fa-filter fa-2x'></i>
+        </a>
+        &nbsp;
+        <a href="#" class="export" data-toggle='tooltip_gral' data-placement='bottom' title="Export to CSV">
+            <i class='fa fa-download fa-2x'></i>
+        </a>
+        &nbsp;
+        <a href="#" class="delete" data-toggle='tooltip_gral' data-placement='bottom' title="Delete tracks">
+            <i class='fa fa-trash fa-2x'></i>
+        </a>
+    </div>
+    <div class="derecha">
+        <p class="navbar-grey2" align="right">Dudas, consultas o sugerencias: ba-analytics@mercadolibre.com</p>
+    </div>
+    <br/>
+</body>
+
+</html>

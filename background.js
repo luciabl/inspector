@@ -1,5 +1,5 @@
 /*
-    INSPECTOR v0.0.1
+    INSPECTOR v0.1.7
  */
 
 var tabExt = null,
